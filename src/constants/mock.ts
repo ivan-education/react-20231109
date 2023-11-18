@@ -1,4 +1,4 @@
-export const restaurants = [
+export const restaurants: Restaurant[] = [
   {
     id: "a757a0e9-03c1-4a2a-b384-8ac21dbe2fb2",
     name: "Dishoom",
