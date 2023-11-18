@@ -1,4 +1,4 @@
-import { Review } from "src/components/review/Review";
+import { Review } from "src/components/review/component";
 
 export const Reviews: React.FC<{ items: Review[] }> = ({ items }) => {
   return (

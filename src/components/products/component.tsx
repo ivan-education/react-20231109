@@ -1,4 +1,4 @@
-import { Product } from "src/components/product/Product";
+import { Product } from "src/components/product/component";
 import styles from "./styles.module.css";
 import productPageStyles from "src/pages/product-page/styles.module.css";
 

@@ -1,4 +1,4 @@
-import { MenuItem } from "src/components/menu-item/MenuItem";
+import { MenuItem } from "src/components/menu-item/component";
 
 export const Menu: React.FC<{ items: MenuItem[] }> = ({ items }) => {
   return (

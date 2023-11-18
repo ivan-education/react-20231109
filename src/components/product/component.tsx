@@ -1,5 +1,5 @@
-import { Menu } from "src/components/menu/Menu";
-import { Reviews } from "src/components/reviews/Reviews";
+import { Menu } from "src/components/menu/component";
+import { Reviews } from "src/components/reviews/component";
 import styles from "./styles.module.css";
 
 export const Product: React.FC<{ product: Restaurant }> = ({ product }) => {

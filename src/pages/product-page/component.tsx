@@ -1,5 +1,5 @@
-import { Categories } from "../../components/categories/Categories";
-import { Products } from "../../components/products/Products";
+import { Categories } from "src/components/categories/component";
+import { Products } from "src/components/products/component";
 import styles from "./styles.module.css";
 
 export const ProductsPage: React.FC<{ products: Restaurant[] }> = ({
