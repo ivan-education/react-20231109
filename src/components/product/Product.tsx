@@ -1,15 +1,13 @@
-import Menu from "../menu/Menu";
-import Reviews from "../reviews/Reviews";
-import classes from "./styles.module.css";
+import { Menu } from "src/components/menu/Menu";
+import { Reviews } from "src/components/reviews/Reviews";
+import styles from "./styles.module.css";
 
-const Product: React.FC<{ product: Restaurant }> = ({ product }) => {
+export const Product: React.FC<{ product: Restaurant }> = ({ product }) => {
   return (
-    <div className={classes.product}>
+    <div className={styles.product}>
       <div>Restaurant Name: {product.name}</div>
       <Menu items={product.menu} />
       <Reviews items={product.reviews} />
     </div>
   );
 };
-
-export default Product;

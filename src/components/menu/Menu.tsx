@@ -1,6 +1,6 @@
-import MenuItem from "../menu-item/MenuItem";
+import { MenuItem } from "src/components/menu-item/MenuItem";
 
-const Menu: React.FC<{ items: MenuItem[] }> = ({ items }) => {
+export const Menu: React.FC<{ items: MenuItem[] }> = ({ items }) => {
   return (
     <>
       <h3>Menu:</h3>
@@ -12,5 +12,3 @@ const Menu: React.FC<{ items: MenuItem[] }> = ({ items }) => {
     </>
   );
 };
-
-export default Menu;

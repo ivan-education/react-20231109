@@ -1,6 +1,6 @@
-import Review from "../review/Review";
+import { Review } from "src/components/review/Review";
 
-const Reviews: React.FC<{ items: Review[] }> = ({ items }) => {
+export const Reviews: React.FC<{ items: Review[] }> = ({ items }) => {
   return (
     <>
       <h3>Reviews:</h3>
@@ -12,5 +12,3 @@ const Reviews: React.FC<{ items: Review[] }> = ({ items }) => {
     </>
   );
 };
-
-export default Reviews;

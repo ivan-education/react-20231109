@@ -1,14 +1,15 @@
-import Product from "../product/Product";
-import classes from "./styles.module.css";
+import { Product } from "src/components/product/Product";
+import styles from "./styles.module.css";
+import productPageStyles from "src/pages/product-page/styles.module.css";
 
-const Products: React.FC<{ products: Restaurant[] }> = ({ products }) => {
+export const Products: React.FC<{ products: Restaurant[] }> = ({
+  products,
+}) => {
   return (
-    <section className={`${classes.products} ${classes.indent}`}>
+    <section className={`${styles.products} ${productPageStyles.indent}`}>
       {products.map((product: Restaurant) => {
         return <Product key={product.id} product={product} />;
       })}
     </section>
   );
 };
-
-export default Products;
