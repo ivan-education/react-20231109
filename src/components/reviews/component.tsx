@@ -7,7 +7,7 @@ export const Reviews: React.FC<{ reviews: ReviewEntity[] }> = ({ reviews }) => {
       <div>
         {reviews.map((review: ReviewEntity) => {
           return (
-            <div>
+            <div key={review.id}>
               User: {review.user}, Rating: {review.rating}, Text: {review.text}
             </div>
           );

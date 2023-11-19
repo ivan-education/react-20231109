@@ -1,6 +1,10 @@
 import { RestaurantsPage } from "src/pages/restaurants-page/component";
-import { restaurants } from "src/constants/mock.ts";
+import { RestaurantEntity } from "./types";
 
-export const App = () => {
+interface Props {
+  restaurants: RestaurantEntity[];
+}
+
+export const App: React.FC<Props> = ({ restaurants }) => {
   return <RestaurantsPage restaurants={restaurants} />;
 };

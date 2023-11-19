@@ -11,7 +11,7 @@ export const Menu: React.FC<Props> = ({ dishes }) => {
       <div>
         {dishes.map((dish: DishEntity) => {
           return (
-            <div>
+            <div key={dish.id}>
               Dish: {dish.name}, Price: {dish.price}
             </div>
           );
