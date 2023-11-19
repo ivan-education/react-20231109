@@ -1,12 +1,15 @@
 import { Category } from "src/components/category/component";
 import classes from "./styles.module.css";
-import productPageStyles from "src/pages/product-page/styles.module.css";
+import restaurantPageStyles from "src/pages/restaurants-page/styles.module.css";
+import { CategoryEntity } from "src/types";
 
-export const Categories: React.FC<{ categories: Category[] }> = ({
-  categories,
-}) => {
+interface Props {
+  categories: CategoryEntity[];
+}
+
+export const Categories: React.FC<Props> = ({ categories }) => {
   return (
-    <div className={`${classes.categories} ${productPageStyles.indent}`}>
+    <div className={`${classes.categories} ${restaurantPageStyles.indent}`}>
       {categories.map((category) => {
         return <Category key={category.id} category={category} />;
       })}

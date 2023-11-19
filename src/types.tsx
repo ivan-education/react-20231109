@@ -1,22 +1,22 @@
-interface MenuItem {
+export interface Dish {
   id: string;
   name: string;
   price: number;
   ingredients: string[];
 }
 
-interface Review {
+export interface ReviewEntity {
   id: string;
   user: string;
   text: string;
   rating: number;
 }
 
-interface Restaurant {
+export interface RestaurantEntity {
   id: string;
   name: string;
-  menu: MenuItem[];
-  reviews: Review[];
+  menu: Dish[];
+  reviews: ReviewEntity[];
 }
 
-type Category = Pick<Restaurant, "id" | "name">;
+export type CategoryEntity = Pick<RestaurantEntity, "id" | "name">;

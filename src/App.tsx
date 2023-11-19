@@ -1,6 +1,6 @@
-import { ProductsPage } from "src/pages/product-page/component.tsx";
+import { RestaurantsPage } from "src/pages/restaurants-page/component";
 import { restaurants } from "src/constants/mock.ts";
 
 export const App = () => {
-  return <ProductsPage products={restaurants} />;
+  return <RestaurantsPage restaurants={restaurants} />;
 };
