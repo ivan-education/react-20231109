@@ -1,8 +1,7 @@
-import { Dish } from "src/types";
-import { MenuItem } from "src/components/menu-item/component";
+import { DishEntity } from "src/types";
 
 interface Props {
-  dishes: Dish[];
+  dishes: DishEntity[];
 }
 
 export const Menu: React.FC<Props> = ({ dishes }) => {
@@ -10,8 +9,12 @@ export const Menu: React.FC<Props> = ({ dishes }) => {
     <>
       <h3>Menu:</h3>
       <div>
-        {dishes.map((dish: Dish) => {
-          return <MenuItem key={dish.id} dish={dish} />;
+        {dishes.map((dish: DishEntity) => {
+          return (
+            <div>
+              Dish: {dish.name}, Price: {dish.price}
+            </div>
+          );
         })}
       </div>
     </>

@@ -1,4 +1,4 @@
-export interface Dish {
+export interface DishEntity {
   id: string;
   name: string;
   price: number;
@@ -15,7 +15,7 @@ export interface ReviewEntity {
 export interface RestaurantEntity {
   id: string;
   name: string;
-  menu: Dish[];
+  menu: DishEntity[];
   reviews: ReviewEntity[];
 }
 

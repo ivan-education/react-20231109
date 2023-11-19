@@ -1,13 +1,16 @@
 import { ReviewEntity } from "src/types";
-import { Review } from "src/components/review/component";
 
-export const Reviews: React.FC<{ items: ReviewEntity[] }> = ({ items }) => {
+export const Reviews: React.FC<{ reviews: ReviewEntity[] }> = ({ reviews }) => {
   return (
     <>
       <h3>Reviews:</h3>
       <div>
-        {items.map((item: ReviewEntity) => {
-          return <Review key={item.id} item={item} />;
+        {reviews.map((review: ReviewEntity) => {
+          return (
+            <div>
+              User: {review.user}, Rating: {review.rating}, Text: {review.text}
+            </div>
+          );
         })}
       </div>
     </>

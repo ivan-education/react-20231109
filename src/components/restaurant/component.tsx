@@ -4,15 +4,16 @@ import styles from "./styles.module.css";
 import { RestaurantEntity } from "src/types";
 
 interface Props {
-  entity: RestaurantEntity;
+  restaurant: RestaurantEntity;
 }
 
-export const Restaurant: React.FC<Props> = ({ entity }) => {
+export const Restaurant: React.FC<Props> = ({ restaurant }) => {
   return (
     <div className={styles.restaurant}>
-      <div>Restaurant Name: {entity.name}</div>
-      <Menu dishes={entity.menu} />
-      <Reviews items={entity.reviews} />
+      <b>Restaurant Name: </b>
+      <span>{restaurant.name}</span>
+      <Menu dishes={restaurant.menu} />
+      <Reviews reviews={restaurant.reviews} />
     </div>
   );
 };

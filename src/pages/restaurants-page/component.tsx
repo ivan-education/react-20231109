@@ -19,7 +19,7 @@ export const RestaurantsPage: React.FC<Props> = ({ restaurants }) => {
   return (
     <section className={styles.indent}>
       <Categories categories={categories} />
-      <Restaurants entities={restaurants} />
+      <Restaurants restaurants={restaurants} />
     </section>
   );
 };
