@@ -2,13 +2,13 @@
 
 ## Project Setup:
 
-Как установить проект на React Typescript с пом. Vite:
+Установка проекта на React Typescript с пом. Vite:
 
 1. `npm create vite@latest`
-2. написать название папки проекта
+2. название папки проекта (либо '.' для текущий папки)
 3. Выбрать `typescript + SWC`
 4. cd folder
-5. `pnpm install` (вместо `npm install`)
+5. `pnpm install` (или `npm install`)
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
