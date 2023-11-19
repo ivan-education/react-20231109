@@ -4,15 +4,15 @@ export const Reviews: React.FC<{ reviews: ReviewEntity[] }> = ({ reviews }) => {
   return (
     <>
       <h3>Reviews:</h3>
-      <div>
+      <ul>
         {reviews.map((review: ReviewEntity) => {
           return (
-            <div key={review.id}>
+            <li key={review.id}>
               User: {review.user}, Rating: {review.rating}, Text: {review.text}
-            </div>
+            </li>
           );
         })}
-      </div>
+      </ul>
     </>
   );
 };

@@ -9,10 +9,10 @@ interface Props {
 
 export const Restaurants: React.FC<Props> = ({ restaurants }) => {
   return (
-    <section className={`${styles.restaurants} ${restaurantPageStyles.indent}`}>
+    <ul className={`${styles.restaurants} ${restaurantPageStyles.indent}`}>
       {restaurants.map((restaurant: RestaurantEntity) => {
         return <Restaurant key={restaurant.id} restaurant={restaurant} />;
       })}
-    </section>
+    </ul>
   );
 };

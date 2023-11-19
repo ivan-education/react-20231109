@@ -8,15 +8,15 @@ export const Menu: React.FC<Props> = ({ dishes }) => {
   return (
     <>
       <h3>Menu:</h3>
-      <div>
+      <ul>
         {dishes.map((dish: DishEntity) => {
           return (
-            <div key={dish.id}>
+            <li key={dish.id}>
               Dish: {dish.name}, Price: {dish.price}
-            </div>
+            </li>
           );
         })}
-      </div>
+      </ul>
     </>
   );
 };

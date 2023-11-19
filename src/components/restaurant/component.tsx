@@ -9,11 +9,11 @@ interface Props {
 
 export const Restaurant: React.FC<Props> = ({ restaurant }) => {
   return (
-    <div className={styles.restaurant}>
+    <li className={styles.restaurant}>
       <b>Restaurant Name: </b>
       <span>{restaurant.name}</span>
       <Menu dishes={restaurant.menu} />
       <Reviews reviews={restaurant.reviews} />
-    </div>
+    </li>
   );
 };
