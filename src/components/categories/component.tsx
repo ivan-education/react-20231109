@@ -5,13 +5,23 @@ import { CategoryEntity } from "src/types";
 
 interface Props {
   categories: CategoryEntity[];
+  onCategorySelect: (category: CategoryEntity) => void;
 }
 
-export const Categories: React.FC<Props> = ({ categories }) => {
+export const Categories: React.FC<Props> = ({
+  categories,
+  onCategorySelect,
+}) => {
   return (
     <div className={`${classes.categories} ${restaurantPageStyles.indent}`}>
       {categories.map((category) => {
-        return <Category key={category.id} category={category} />;
+        return (
+          <Category
+            key={category.id}
+            category={category}
+            onClick={() => onCategorySelect(category)}
+          />
+        );
       })}
     </div>
   );

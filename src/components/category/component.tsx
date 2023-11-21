@@ -2,8 +2,9 @@ import { CategoryEntity } from "src/types";
 
 interface Props {
   category: CategoryEntity;
+  onClick: () => void;
 }
 
-export const Category: React.FC<Props> = ({ category }) => {
-  return <div>{category.name}</div>;
+export const Category: React.FC<Props> = ({ category, onClick }) => {
+  return <div onClick={onClick}>{category.name}</div>;
 };

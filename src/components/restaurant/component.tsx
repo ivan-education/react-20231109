@@ -4,16 +4,20 @@ import styles from "./styles.module.css";
 import { RestaurantEntity } from "src/types";
 
 interface Props {
-  restaurant: RestaurantEntity;
+  restaurant: RestaurantEntity | undefined;
 }
 
 export const Restaurant: React.FC<Props> = ({ restaurant }) => {
+  if (!restaurant) {
+    return null;
+  }
+
   return (
-    <li className={styles.restaurant}>
+    <div className={styles.restaurant}>
       <b>Restaurant Name: </b>
       <span>{restaurant.name}</span>
       <Menu dishes={restaurant.menu} />
       <Reviews reviews={restaurant.reviews} />
-    </li>
+    </div>
   );
 };
