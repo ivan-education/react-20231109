@@ -1,4 +1,5 @@
 import { ReviewEntity } from "src/types";
+import { Review } from "../review/component";
 
 export const Reviews: React.FC<{ reviews: ReviewEntity[] }> = ({ reviews }) => {
   return (
@@ -8,7 +9,7 @@ export const Reviews: React.FC<{ reviews: ReviewEntity[] }> = ({ reviews }) => {
         {reviews.map((review: ReviewEntity) => {
           return (
             <li key={review.id}>
-              User: {review.user}, Rating: {review.rating}, Text: {review.text}
+              <Review review={review} />
             </li>
           );
         })}
