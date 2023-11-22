@@ -1,28 +1,41 @@
 import { useState } from "react";
 import classes from "./styles.module.css";
 
-export const Counter: React.FC = () => {
-  const [count, setCount] = useState(0);
+const MIN_COUNT = 0;
+const MAX_COUNT = 5;
+
+interface Props {
+  minCount?: number;
+  maxCount?: number;
+  onUpdateCount?: (n: number) => void;
+}
+
+export const Counter: React.FC<Props> = ({
+  minCount = MIN_COUNT,
+  maxCount = MAX_COUNT,
+  onUpdateCount,
+}) => {
+  const [count, setCount] = useState(minCount);
   return (
     <span className="counter">
       <button
         className={classes.counter__button}
-        onClick={() =>
-          setCount((c) => {
-            return c > 0 ? c - 1 : 0;
-          })
-        }
+        onClick={() => {
+          const updated = minCount < count ? count - 1 : minCount;
+          setCount(updated);
+          onUpdateCount?.(updated);
+        }}
       >
         -
       </button>
       &nbsp;{count}&nbsp;
       <button
         className={classes.counter__button}
-        onClick={() =>
-          setCount((c) => {
-            return c < 5 ? c + 1 : 5;
-          })
-        }
+        onClick={() => {
+          const updated = count < maxCount ? count + 1 : maxCount;
+          setCount(updated);
+          onUpdateCount?.(updated);
+        }}
       >
         +
       </button>
