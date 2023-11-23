@@ -6,16 +6,14 @@ interface Props {
   dish: DishEntity;
 }
 export const Dish: React.FC<Props> = ({ dish }) => {
-  const [itemCount, setItemCount] = useState(0);
-  const onUpdateCount = (n: number) => {
-    setItemCount(n);
-  };
+  const [count, setCount] = useState(0);
+
   return (
     <div>
       Dish: {dish.name}, Price: {dish.price}
       &nbsp;
-      <Counter onUpdateCount={onUpdateCount} />
-      {itemCount > 0 && <span>&nbsp; Selected: {itemCount} dishes</span>}
+      <Counter count={count} onUpdateCount={(n) => setCount(n)} />
+      {count > 0 && <span>&nbsp; Selected: {count} dishes</span>}
     </div>
   );
 };
