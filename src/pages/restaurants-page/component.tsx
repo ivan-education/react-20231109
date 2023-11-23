@@ -15,10 +15,8 @@ export const RestaurantsPage: React.FC<Props> = ({ restaurants }) => {
 
   const categories: CategoryEntity[] = restaurants.map(
     (restaurant: RestaurantEntity) => {
-      return {
-        id: restaurant.id,
-        name: restaurant.name,
-      };
+      const { id, name } = restaurant;
+      return { id, name };
     }
   );
 

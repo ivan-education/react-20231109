@@ -1,29 +1,32 @@
 import classes from "./styles.module.css";
 
-const MIN_COUNT = 0;
-const MAX_COUNT = 5;
+const MIN = 0;
+const MAX = 5;
 
 interface Props {
   count: number;
   onUpdateCount: (n: number) => void;
-  minCount?: number;
-  maxCount?: number;
+  step?: number;
+  min?: number;
+  max?: number;
 }
 
 export const Counter: React.FC<Props> = ({
-  count = MIN_COUNT,
+  count = MIN,
   onUpdateCount,
-  minCount = MIN_COUNT,
-  maxCount = MAX_COUNT,
+  step = 1,
+  min = MIN,
+  max = MAX,
 }) => {
   return (
     <span className="counter">
       <button
         className={classes.counter__button}
         onClick={() => {
-          const updated = minCount < count ? count - 1 : minCount;
+          const updated = min < count ? count - step : min;
           onUpdateCount(updated);
         }}
+        disabled={count <= min}
       >
         -
       </button>
@@ -31,9 +34,10 @@ export const Counter: React.FC<Props> = ({
       <button
         className={classes.counter__button}
         onClick={() => {
-          const updated = count < maxCount ? count + 1 : maxCount;
+          const updated = count < max ? count + step : max;
           onUpdateCount(updated);
         }}
+        disabled={count >= max}
       >
         +
       </button>
