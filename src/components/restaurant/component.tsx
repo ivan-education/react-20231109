@@ -4,7 +4,7 @@ import styles from "./styles.module.css";
 import { RestaurantEntity } from "src/types";
 
 interface Props {
-  restaurant: RestaurantEntity | undefined;
+  restaurant: RestaurantEntity;
 }
 
 export const Restaurant: React.FC<Props> = ({ restaurant }) => {

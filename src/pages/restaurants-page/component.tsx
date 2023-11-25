@@ -9,9 +9,11 @@ interface Props {
 }
 
 export const RestaurantsPage: React.FC<Props> = ({ restaurants }) => {
-  const [selectedRestaurant, setSelectedRestaurant] = useState<
-    RestaurantEntity | undefined
-  >();
+  const [selectedRestaurantIndex, setSelectedRestaurantIndex] =
+    useState<number>(-1);
+
+  const selectedRestaurant = restaurants[selectedRestaurantIndex];
+  const activeCategoryId = selectedRestaurant ? selectedRestaurant.id : "";
 
   const categories: CategoryEntity[] = restaurants.map(
     (restaurant: RestaurantEntity) => {
@@ -20,15 +22,14 @@ export const RestaurantsPage: React.FC<Props> = ({ restaurants }) => {
     }
   );
 
-  const onCategorySelect = (category: CategoryEntity) => {
-    const selected = restaurants.find((item) => item.id === category.id);
-    setSelectedRestaurant(selected);
-  };
-
   return (
     <section className={styles.indent}>
-      <Categories categories={categories} onCategorySelect={onCategorySelect} />
-      <Restaurant restaurant={selectedRestaurant} />
+      <Categories
+        categories={categories}
+        onCategorySelect={setSelectedRestaurantIndex}
+        activeCategoryId={activeCategoryId}
+      />
+      {selectedRestaurant && <Restaurant restaurant={selectedRestaurant} />}
     </section>
   );
 };
