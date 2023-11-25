@@ -13,7 +13,6 @@ export const RestaurantsPage: React.FC<Props> = ({ restaurants }) => {
     useState<number>(-1);
 
   const selectedRestaurant = restaurants[selectedRestaurantIndex];
-  const activeCategoryId = selectedRestaurant ? selectedRestaurant.id : "";
 
   const categories: CategoryEntity[] = restaurants.map(
     (restaurant: RestaurantEntity) => {
@@ -27,7 +26,6 @@ export const RestaurantsPage: React.FC<Props> = ({ restaurants }) => {
       <Categories
         categories={categories}
         onCategorySelect={setSelectedRestaurantIndex}
-        activeCategoryId={activeCategoryId}
       />
       {selectedRestaurant && <Restaurant restaurant={selectedRestaurant} />}
     </section>
