@@ -19,12 +19,12 @@ const DEFAULT_FORM_STATE: ReviewEntity = {
   rating: RATING_MAX,
 };
 
-type ACTIONTYPE =
+type ActionType =
   | { type: ACTIONS.SET_USER; payload: string }
   | { type: ACTIONS.SET_TEXT; payload: string }
   | { type: ACTIONS.SET_RATING; payload: number };
 
-function reducer(state: ReviewEntity, action: ACTIONTYPE) {
+function reducer(state: ReviewEntity, action: ActionType) {
   switch (action.type) {
     case ACTIONS.SET_USER:
       return {
