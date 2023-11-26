@@ -13,7 +13,7 @@ enum ACTIONS {
 }
 
 const DEFAULT_FORM_STATE: ReviewEntity = {
-  id: "0",
+  id: "",
   user: "",
   text: "",
   rating: RATING_MAX,
