@@ -2,6 +2,7 @@ import { Menu } from "src/components/menu/component";
 import { Reviews } from "src/components/reviews/component";
 import styles from "./styles.module.css";
 import { RestaurantEntity } from "src/types";
+import { ReviewForm } from "../review-form/component";
 
 interface Props {
   restaurant: RestaurantEntity;
@@ -18,6 +19,7 @@ export const Restaurant: React.FC<Props> = ({ restaurant }) => {
       <span>{restaurant.name}</span>
       <Menu dishes={restaurant.menu} />
       <Reviews reviews={restaurant.reviews} />
+      <ReviewForm />
     </div>
   );
 };
