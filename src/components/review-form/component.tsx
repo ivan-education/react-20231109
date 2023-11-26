@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import { ReviewEntity } from "src/types";
 import { Counter } from "../counter/component";
 
@@ -42,7 +42,11 @@ function reducer(state: ReviewEntity, action: ACTIONTYPE) {
   }
 }
 
-export const ReviewForm: React.FC = () => {
+interface Props {
+  restaurantId: string;
+}
+
+export const ReviewForm: React.FC<Props> = ({ restaurantId }) => {
   const [reviewForm, dispatch] = useReducer(reducer, DEFAULT_FORM_STATE);
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -52,6 +56,12 @@ export const ReviewForm: React.FC = () => {
       id: crypto.randomUUID(),
     });
   };
+
+  const clearForm = () => {
+    dispatch({ type: ACTIONS.SET_USER, payload: "" });
+  };
+
+  useEffect(() => clearForm(), [restaurantId]);
 
   return (
     <div>

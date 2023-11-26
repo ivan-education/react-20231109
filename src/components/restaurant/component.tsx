@@ -19,7 +19,7 @@ export const Restaurant: React.FC<Props> = ({ restaurant }) => {
       <span>{restaurant.name}</span>
       <Menu dishes={restaurant.menu} />
       <Reviews reviews={restaurant.reviews} />
-      <ReviewForm />
+      <ReviewForm restaurantId={restaurant.id} />
     </div>
   );
 };
