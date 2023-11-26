@@ -2,11 +2,15 @@ import { useReducer } from "react";
 import { ReviewEntity } from "src/types";
 import { Counter } from "../counter/component";
 
+const RATING_MIN = 1;
+const RATING_MAX = 5;
+const RATING_STEP = 0.5;
+
 const DEFAULT_FORM_STATE: ReviewEntity = {
   id: "0",
   user: "",
   text: "",
-  rating: 5,
+  rating: RATING_MAX,
 };
 
 type ACTIONTYPE =
@@ -74,8 +78,8 @@ export const ReviewForm: React.FC = () => {
             onUpdateCount={(count) => {
               dispatch({ type: "setRating", payload: count });
             }}
-            step={0.5}
-            min={1}
+            step={RATING_STEP}
+            min={RATING_MIN}
           />
         </div>
         <input type="submit" value="Submit" />
