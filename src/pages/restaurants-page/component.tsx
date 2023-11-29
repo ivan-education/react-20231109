@@ -1,6 +1,6 @@
 import { Categories } from "src/components/categories/component";
 import { CategoryEntity, RestaurantEntity } from "src/types";
-import styles from "./styles.module.css";
+import classes from "./styles.module.scss";
 import { useState } from "react";
 import { Restaurant } from "src/components/restaurant/component";
 
@@ -22,12 +22,18 @@ export const RestaurantsPage: React.FC<Props> = ({ restaurants }) => {
   );
 
   return (
-    <section className={styles.indent}>
+    <section className="restaurantPage">
       <Categories
         categories={categories}
         onCategorySelect={setSelectedRestaurantIndex}
+        className={classes.restaurantPage__category}
       />
-      {selectedRestaurant && <Restaurant restaurant={selectedRestaurant} />}
+      {selectedRestaurant && (
+        <Restaurant
+          restaurant={selectedRestaurant}
+          className={classes.restaurantPage__restaurant}
+        />
+      )}
     </section>
   );
 };

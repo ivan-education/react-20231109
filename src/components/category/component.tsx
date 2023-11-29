@@ -1,5 +1,5 @@
 import { CategoryEntity } from "src/types";
-import classes from "./styles.module.css";
+import classes from "./styles.module.scss";
 
 interface Props {
   category: CategoryEntity;

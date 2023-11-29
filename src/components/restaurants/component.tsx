@@ -1,7 +1,6 @@
 import { Restaurant } from "src/components/restaurant/component";
-import restaurantPageStyles from "src/pages/restaurants-page/styles.module.css";
 import { RestaurantEntity } from "src/types";
-import styles from "./styles.module.css";
+import classes from "./styles.module.scss";
 
 interface Props {
   restaurants: RestaurantEntity[];
@@ -9,7 +8,7 @@ interface Props {
 
 export const Restaurants: React.FC<Props> = ({ restaurants }) => {
   return (
-    <ul className={`${styles.restaurants} ${restaurantPageStyles.indent}`}>
+    <ul className={classes.restaurants}>
       {restaurants.map((restaurant: RestaurantEntity) => {
         return (
           <li key={restaurant.id}>

@@ -1,0 +1,15 @@
+@import "../../scss/common.scss";
+
+.categories {
+  background-color: orange;
+}
+.categories__inner {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  @media screen and (max-width: $breakpointMobile) {
+    padding-left: $mobilePadding;
+    padding-right: $mobilePadding;
+  }
+}

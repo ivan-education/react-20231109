@@ -1,0 +1,19 @@
+@import '../../scss/common.scss';
+
+.dishes {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.dishes__container {
+  padding: 10px;
+  border: 1px solid $colorCreamy;
+  border-radius: .5em;
+  width: calc(50% - 10px);
+  box-sizing: border-box;
+  margin-bottom: 20px;
+
+  @media screen and (max-width: $breakpointMobile) {
+    width: 100%;
+  }
+}

@@ -1,0 +1,20 @@
+@import '../../scss/common.scss';
+
+.review__container {
+  position: relative;
+  padding: 10px;
+  box-sizing: border-box;
+  margin-top: 30px;
+  border: 2px dashed $colorCreamy;
+  
+  &::before {
+    content: '';
+    background: url(/quote.svg) no-repeat;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+  }
+}
+

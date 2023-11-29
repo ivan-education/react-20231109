@@ -1,0 +1,9 @@
+.dish {
+  line-height: 2;
+  display: flex;
+  justify-content: space-between;
+
+  &__name {
+    font-style: italic;
+  }
+}
