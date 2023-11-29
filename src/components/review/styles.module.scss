@@ -1,7 +1,14 @@
 .review {
+  display: flex;
+  justify-content: space-between;
   line-height: 2.5;
 
   &__name {
     font-weight: bold;
+  }
+
+  &__rating {
+    display: flex;
+    align-items: center;
   }
 }
