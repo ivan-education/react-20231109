@@ -1,0 +1,36 @@
+$right-column-width: 250px;
+
+.form {
+  &__row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  &__label {
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+    padding-right: 10px;
+    box-sizing: border-box;
+  }
+  &__field {
+    width: $right-column-width;
+    height: 40px;
+    padding: 5px;
+    box-sizing: border-box;
+  }
+  &__submit {
+    cursor: pointer;
+    background-color: red;
+    color: white;
+    border-radius: 0.5em;
+    padding: 1em;
+    border: none;
+    font-size: 1em;
+    width: $right-column-width;
+
+    &:hover {
+      background-color: #a71b00;
+    }
+  }
+}

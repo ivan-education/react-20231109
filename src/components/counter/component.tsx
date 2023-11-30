@@ -1,4 +1,4 @@
-import classes from "./styles.module.css";
+import classes from "./styles.module.scss";
 
 const MIN = 0;
 const MAX = 5;
@@ -19,7 +19,7 @@ export const Counter: React.FC<Props> = ({
   max = MAX,
 }) => {
   return (
-    <span className="counter">
+    <div className={classes.counter}>
       <button
         className={classes.counter__button}
         onClick={(e) => {
@@ -31,7 +31,7 @@ export const Counter: React.FC<Props> = ({
       >
         -
       </button>
-      &nbsp;{count}&nbsp;
+      <div className={classes.counter__number}>{count}</div>
       <button
         className={classes.counter__button}
         onClick={(e) => {
@@ -43,6 +43,6 @@ export const Counter: React.FC<Props> = ({
       >
         +
       </button>
-    </span>
+    </div>
   );
 };

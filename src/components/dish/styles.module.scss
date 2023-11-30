@@ -1,0 +1,15 @@
+@import '../../scss/common.scss';
+
+.dish {
+  padding: 10px;
+  border: 1px solid $colorCreamy;
+  border-radius: .5em;
+  box-sizing: border-box;
+  line-height: 2.5;
+  display: flex;
+  justify-content: space-between;
+
+  &__name {
+    font-style: italic;
+  }
+}

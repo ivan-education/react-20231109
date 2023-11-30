@@ -1,0 +1,21 @@
+@import '../../scss/common.scss'; 
+
+.category {
+  padding: 1.5em;
+  border-radius: .5em;
+  cursor: pointer;
+  background-color: $colorLightCreamy;
+  border: none;
+  color: $colorBrown;
+  box-sizing: border-box;
+  width: 110px;
+
+  &:hover {
+    background-color: $colorBrown;
+    color: $colorLightCreamy;
+  }
+}
+.category_active {
+  background-color: lightgray;
+  color: black;
+}

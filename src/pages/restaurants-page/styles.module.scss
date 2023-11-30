@@ -1,0 +1,19 @@
+@import '../../scss/common.scss';
+
+$pageWidth: 800px;
+
+.restaurantPage__category {
+  margin: 0 auto;
+  max-width: $pageWidth;
+}
+
+.restaurantPage__restaurant {
+  margin: 20px auto;
+  max-width: $pageWidth;
+
+  @media screen and (max-width: $breakpointMobile) {
+    margin: 20px $mobilePadding;
+  }
+}
+
+

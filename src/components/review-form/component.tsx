@@ -1,6 +1,7 @@
 import { useEffect, useReducer } from "react";
 import { ReviewEntity } from "src/types";
 import { Counter } from "../counter/component";
+import classes from "./styles.module.scss";
 
 const RATING_MIN = 1;
 const RATING_MAX = 5;
@@ -65,9 +66,12 @@ export const ReviewForm: React.FC<Props> = ({ restaurantId }) => {
 
   return (
     <div>
+      <h4>Leave your review:</h4>
       <form onSubmit={onSubmit}>
-        <div>
-          <label htmlFor="username">Name: </label>
+        <div className={classes.form__row}>
+          <label htmlFor="username" className={classes.form__label}>
+            Name:{" "}
+          </label>
           <input
             id="username"
             type="text"
@@ -75,20 +79,24 @@ export const ReviewForm: React.FC<Props> = ({ restaurantId }) => {
             onChange={(e) =>
               dispatch({ type: ACTIONS.SET_USER, payload: e.target.value })
             }
+            className={classes.form__field}
           />
         </div>
-        <div>
-          <label htmlFor="text">Text: </label>
+        <div className={classes.form__row}>
+          <label htmlFor="text" className={classes.form__label}>
+            Text:{" "}
+          </label>
           <textarea
             id="text"
             value={reviewForm.text}
             onChange={(e) =>
               dispatch({ type: ACTIONS.SET_TEXT, payload: e.target.value })
             }
+            className={classes.form__field}
           />
         </div>
-        <div>
-          <label>Rating: </label>
+        <div className={classes.form__row}>
+          <label className={classes.form__label}>Rating: </label>
           <Counter
             count={reviewForm.rating}
             onUpdateCount={(count) => {
@@ -98,7 +106,14 @@ export const ReviewForm: React.FC<Props> = ({ restaurantId }) => {
             min={RATING_MIN}
           />
         </div>
-        <input type="submit" value="Submit" />
+        <div className={classes.form__row}>
+          <label className={classes.form__label}></label>
+          <input
+            type="submit"
+            value="Submit"
+            className={classes.form__submit}
+          />
+        </div>
       </form>
     </div>
   );

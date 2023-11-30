@@ -1,0 +1,25 @@
+@import '../../scss/common.scss';
+
+
+.counter {
+  display: flex;
+  align-items: center;
+
+  &__button {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    background-color: $colorBrown;
+    border-radius: 50%;
+    color: white;
+    border: none;
+  }
+  &__button:disabled {
+    background-color: #C4A484;
+  }
+  &__number {
+    text-align: center;
+    display: inline-block;
+    min-width: 25px;
+  }
+}
