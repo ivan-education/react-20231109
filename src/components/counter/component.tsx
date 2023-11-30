@@ -22,7 +22,8 @@ export const Counter: React.FC<Props> = ({
     <span className="counter">
       <button
         className={classes.counter__button}
-        onClick={() => {
+        onClick={(e) => {
+          e.preventDefault();
           const updated = min < count ? count - step : min;
           onUpdateCount(updated);
         }}
@@ -33,7 +34,8 @@ export const Counter: React.FC<Props> = ({
       &nbsp;{count}&nbsp;
       <button
         className={classes.counter__button}
-        onClick={() => {
+        onClick={(e) => {
+          e.preventDefault();
           const updated = count < max ? count + step : max;
           onUpdateCount(updated);
         }}
