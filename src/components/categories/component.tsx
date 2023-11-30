@@ -29,6 +29,7 @@ export const Categories: React.FC<Props> = ({
                 setActiveCategoryId(category.id);
               }}
               isActive={category.id === activeCategoryId}
+              className={classes.categories__item}
             />
           );
         })}
