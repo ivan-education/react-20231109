@@ -11,7 +11,11 @@ export const Restaurants: React.FC<Props> = ({ restaurants }) => {
   return (
     <ul className={`${styles.restaurants} ${restaurantPageStyles.indent}`}>
       {restaurants.map((restaurant: RestaurantEntity) => {
-        return <Restaurant key={restaurant.id} restaurant={restaurant} />;
+        return (
+          <li key={restaurant.id}>
+            <Restaurant restaurant={restaurant} />
+          </li>
+        );
       })}
     </ul>
   );

@@ -1,0 +1,10 @@
+.category {
+  padding: 1em;
+  border-radius: .5em;
+  border: .2em solid black;
+  cursor: pointer;
+  background-color: #fff;
+}
+.category_active {
+  background-color: lightgray;
+}

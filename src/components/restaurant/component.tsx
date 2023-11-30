@@ -8,12 +8,16 @@ interface Props {
 }
 
 export const Restaurant: React.FC<Props> = ({ restaurant }) => {
+  if (!restaurant) {
+    return null;
+  }
+
   return (
-    <li className={styles.restaurant}>
+    <div className={styles.restaurant}>
       <b>Restaurant Name: </b>
       <span>{restaurant.name}</span>
       <Menu dishes={restaurant.menu} />
       <Reviews reviews={restaurant.reviews} />
-    </li>
+    </div>
   );
 };
