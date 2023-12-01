@@ -1,6 +1,6 @@
 # React + TypeScript + Vite
 
-## Project Setup:
+## Project Setup :
 
 Установка проекта на React Typescript с пом. Vite:
 
