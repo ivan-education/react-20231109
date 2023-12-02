@@ -1,3 +1,4 @@
+import { Button } from "../button/component";
 import classes from "./styles.module.scss";
 
 const MIN = 0;
@@ -20,7 +21,7 @@ export const Counter: React.FC<Props> = ({
 }) => {
   return (
     <div className={classes.counter}>
-      <button
+      <Button
         className={classes.counter__button}
         onClick={(e) => {
           e.preventDefault();
@@ -30,9 +31,9 @@ export const Counter: React.FC<Props> = ({
         disabled={count <= min}
       >
         -
-      </button>
+      </Button>
       <div className={classes.counter__number}>{count}</div>
-      <button
+      <Button
         className={classes.counter__button}
         onClick={(e) => {
           e.preventDefault();
@@ -42,7 +43,7 @@ export const Counter: React.FC<Props> = ({
         disabled={count >= max}
       >
         +
-      </button>
+      </Button>
     </div>
   );
 };

@@ -20,3 +20,8 @@ export interface RestaurantEntity {
 }
 
 export type CategoryEntity = Pick<RestaurantEntity, "id" | "name">;
+
+export enum Theme {
+  LIGHT = "light",
+  DARK = "dark",
+}
