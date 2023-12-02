@@ -12,11 +12,11 @@ interface Props {
 
 export const Restaurant: React.FC<Props> = ({ restaurant, className }) => {
   return (
-    <div className={classNames(classes.restaurant, className)}>
+    <section className={classNames(classes.restaurant, className)}>
       <h2>{restaurant.name}</h2>
       <Menu dishes={restaurant.menu} />
       <Reviews reviews={restaurant.reviews} />
       <ReviewForm restaurantId={restaurant.id} />
-    </div>
+    </section>
   );
 };

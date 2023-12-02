@@ -17,7 +17,7 @@ export const Categories: React.FC<Props> = ({
 }) => {
   const [activeCategoryId, setActiveCategoryId] = useState<string>("");
   return (
-    <div className={classNames(classes.categories)}>
+    <section className={classNames(classes.categories)}>
       <div className={classNames(classes.categories__inner, className)}>
         {categories.map((category, index) => {
           return (
@@ -34,6 +34,6 @@ export const Categories: React.FC<Props> = ({
           );
         })}
       </div>
-    </div>
+    </section>
   );
 };

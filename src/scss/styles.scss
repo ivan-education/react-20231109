@@ -1,6 +1,13 @@
+html,
 body {
   margin: 0;
-  background-color: #F6EBDC;
+  background-color: #f6ebdc;
+}
+
+html,
+body,
+#root {
+  height: 100vh;
 }
 
 ul {
