@@ -1,3 +1,4 @@
+import { createContext, useState } from "react";
 import { Footer } from "../footer/component";
 import { Header } from "../header/component";
 import classes from "./styles.module.scss";
@@ -8,6 +9,8 @@ interface Props {
 }
 
 export const Layout: React.FC<Props> = ({ children }) => {
+  const [theme, setTheme] = useState<Theme>(Theme.LIGHT);
+
   return (
     <div className={classes.layout}>
       <ThemeProvider>
