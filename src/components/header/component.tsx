@@ -1,3 +1,4 @@
+import { Button } from "../button/component";
 import classes from "./styles.module.scss";
 import classnames from "classnames";
 
@@ -9,10 +10,10 @@ interface Props {
 export const Header: React.FC<Props> = ({ className, onChangeTheme }) => {
   return (
     <header className={classnames(classes.header, className)}>
-      <button className={classes.header__button}>Order</button>
-      <button className={classes.header__button} onClick={onChangeTheme}>
+      <Button className={classes.header__button}>Order</Button>
+      <Button className={classes.header__button} onClick={onChangeTheme}>
         Change theme
-      </button>
+      </Button>
     </header>
   );
 };

@@ -1,9 +1,9 @@
 @import "../../scss/common.scss";
 
 .category {
-  padding: 1.5em;
-  border-radius: 0.5em;
   cursor: pointer;
+  padding: 1.2em;
+  border-radius: 0.5em;
   border: none;
   box-sizing: border-box;
   width: 110px;
@@ -14,8 +14,7 @@
     color: $colorBrown;
 
     &:hover {
-      background-color: $colorBrown;
-      color: $colorLightCreamy;
+      opacity: 0.7;
     }
   }
 
@@ -24,11 +23,10 @@
     color: $colorLightCreamy;
 
     &:hover {
-      background-color: $colorLightCreamy;
-      color: $colorBrown;
+      opacity: 0.7;
     }
   }
 }
 .category_active {
-  opacity: 0.5;
+  opacity: 0.7;
 }

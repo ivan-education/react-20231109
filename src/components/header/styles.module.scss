@@ -1,18 +1,16 @@
 @import "../../scss/common.scss";
+@import "../../scss/buttons.scss";
 
 .header {
-  min-height: 60px;
+  min-height: 75px;
   display: flex;
   align-items: center;
   gap: 12px;
   padding-left: 12px;
+  background-color: $colorBrown;
+  z-index: 1;
 }
 
 .header__button {
-  background-color: $colorCreamy;
-  color: $colorBrown;
-  border-radius: 1em;
-  border: none;
-  padding: 1em;
-  cursor: pointer;
+  @include headerButton();
 }
