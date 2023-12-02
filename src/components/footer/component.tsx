@@ -1,5 +1,9 @@
-import styles from "./styles.module.scss";
+import classes from "./styles.module.scss";
 
 export const Footer: React.FC = () => {
-  return <footer className={styles.footer}>Footer</footer>;
+  return (
+    <footer className={classes.footer}>
+      <button className={classes.footer__button}>Contacts</button>
+    </footer>
+  );
 };

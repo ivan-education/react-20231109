@@ -1,4 +1,18 @@
+@import "../../scss/common.scss";
+
 .footer {
   min-height: 60px;
-  background-color: black;
+  background-color: $colorBrown;
+  display: flex;
+  align-items: center;
+  padding-left: 12px;
+}
+
+.footer__button {
+  background-color: $colorCreamy;
+  color: $colorBrown;
+  border-radius: 1em;
+  border: none;
+  padding: 1em;
+  cursor: pointer;
 }

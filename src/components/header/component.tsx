@@ -1,4 +1,4 @@
-import styles from "./styles.module.scss";
+import classes from "./styles.module.scss";
 import classnames from "classnames";
 
 interface Props {
@@ -7,8 +7,9 @@ interface Props {
 
 export const Header: React.FC<Props> = ({ className }) => {
   return (
-    <header className={classnames(styles.header, className)}>
-      <button>Order</button> <button>Change theme</button>
+    <header className={classnames(classes.header, className)}>
+      <button className={classes.header__button}>Order</button>
+      <button className={classes.header__button}>Change theme</button>
     </header>
   );
 };
