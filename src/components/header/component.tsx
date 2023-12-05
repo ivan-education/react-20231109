@@ -6,7 +6,6 @@ import classnames from "classnames";
 
 interface Props {
   className: string;
-  onChangeTheme: () => void;
 }
 
 export const Header: React.FC<Props> = ({ className }) => {
