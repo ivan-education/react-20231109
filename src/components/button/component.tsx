@@ -1,12 +1,11 @@
-import { useContext } from "react";
-import { ThemeContext } from "../layout/component";
 import classNames from "classnames";
+import { useTheme } from "../theme-context/hooks";
 
 interface Props extends React.ComponentPropsWithoutRef<"button"> {
   children: React.ReactNode;
 }
 export const Button: React.FC<Props> = ({ children, ...props }: Props) => {
-  const theme = useContext(ThemeContext);
+  const { theme } = useTheme();
 
   props.className = classNames(props.className, theme);
 
