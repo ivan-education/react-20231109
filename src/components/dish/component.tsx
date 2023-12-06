@@ -1,13 +1,20 @@
-import { DishEntity } from "src/types";
 import { Counter } from "../counter/component";
 import { useState } from "react";
 import classes from "./styles.module.scss";
+import { useAppSelector } from "../redux/hooks";
+import { selectDishById } from "../redux/features/dish/selectors";
 
 interface Props {
-  dish: DishEntity;
+  id: string;
 }
-export const Dish: React.FC<Props> = ({ dish }) => {
+export const Dish: React.FC<Props> = ({ id }) => {
   const [count, setCount] = useState(0);
+
+  const dish = useAppSelector((state) => selectDishById(state, id));
+
+  if (!dish) {
+    return null;
+  }
 
   return (
     <div className={classes.dish}>

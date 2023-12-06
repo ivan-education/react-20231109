@@ -1,8 +1,8 @@
 import { useEffect, useReducer } from "react";
-import { ReviewEntity } from "src/types";
 import { Counter } from "../counter/component";
 import classes from "./styles.module.scss";
 import { Button } from "../button/component";
+import { UserEntity } from "src/types";
 
 const RATING_MIN = 1;
 const RATING_MAX = 5;
@@ -14,19 +14,28 @@ enum ACTIONS {
   SET_RATING = "setRating",
 }
 
-const DEFAULT_FORM_STATE: ReviewEntity = {
+interface ReviewForm {
+  id: string;
+  user: UserEntity;
+  text: string;
+  rating: number;
+}
+
+const DEFAULT_USER = { id: "default_id", name: "" };
+
+const DEFAULT_FORM_STATE: ReviewForm = {
   id: "",
-  user: "",
+  user: DEFAULT_USER,
   text: "",
   rating: RATING_MAX,
 };
 
 type ActionType =
-  | { type: ACTIONS.SET_USER; payload: string }
+  | { type: ACTIONS.SET_USER; payload: UserEntity }
   | { type: ACTIONS.SET_TEXT; payload: string }
   | { type: ACTIONS.SET_RATING; payload: number };
 
-function reducer(state: ReviewEntity, action: ActionType) {
+function reducer(state: ReviewForm, action: ActionType) {
   switch (action.type) {
     case ACTIONS.SET_USER:
       return {
@@ -48,6 +57,8 @@ interface Props {
   restaurantId: string;
 }
 
+const generateId = () => crypto.randomUUID();
+
 export const ReviewForm: React.FC<Props> = ({ restaurantId }) => {
   const [reviewForm, dispatch] = useReducer(reducer, DEFAULT_FORM_STATE);
 
@@ -55,12 +66,12 @@ export const ReviewForm: React.FC<Props> = ({ restaurantId }) => {
     e.preventDefault();
     console.log("Submitted Form Values: ", {
       ...reviewForm,
-      id: crypto.randomUUID(),
+      id: generateId(),
     });
   };
 
   const clearForm = () => {
-    dispatch({ type: ACTIONS.SET_USER, payload: "" });
+    dispatch({ type: ACTIONS.SET_USER, payload: DEFAULT_USER });
   };
 
   useEffect(() => clearForm(), [restaurantId]);
@@ -76,9 +87,12 @@ export const ReviewForm: React.FC<Props> = ({ restaurantId }) => {
           <input
             id="username"
             type="text"
-            value={reviewForm.user}
+            value={reviewForm.user.name}
             onChange={(e) =>
-              dispatch({ type: ACTIONS.SET_USER, payload: e.target.value })
+              dispatch({
+                type: ACTIONS.SET_USER,
+                payload: { id: DEFAULT_USER.id, name: e.target.value },
+              })
             }
             className={classes.form__field}
           />

@@ -1,20 +1,19 @@
-import { DishEntity } from "src/types";
 import { Dish } from "../dish/component";
 import classes from "./styles.module.scss";
 
 interface Props {
-  dishes: DishEntity[];
+  dishIds: string[];
 }
 
-export const Menu: React.FC<Props> = ({ dishes }) => {
+export const Menu: React.FC<Props> = ({ dishIds }) => {
   return (
     <>
       <h3>Menu:</h3>
       <ul className={classes.dishes}>
-        {dishes.map((dish: DishEntity) => {
+        {dishIds.map((dishId) => {
           return (
-            <li key={dish.id} className={classes.dishes__container}>
-              <Dish dish={dish} />
+            <li key={dishId} className={classes.dishes__container}>
+              <Dish id={dishId} />
             </li>
           );
         })}

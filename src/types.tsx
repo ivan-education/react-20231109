@@ -5,9 +5,9 @@ export interface DishEntity {
   ingredients: string[];
 }
 
-export interface ReviewEntity {
+export interface ReviewEntityNorm {
   id: string;
-  user: string;
+  userId: string;
   text: string;
   rating: number;
 }
@@ -16,7 +16,19 @@ export interface RestaurantEntity {
   id: string;
   name: string;
   menu: DishEntity[];
-  reviews: ReviewEntity[];
+  reviews: ReviewEntityNorm[];
+}
+
+export interface RestaurantEntityNorm {
+  id: string;
+  name: string;
+  menu: string[];
+  reviews: string[];
+}
+
+export interface UserEntity {
+  id: string;
+  name: string;
 }
 
 export type CategoryEntity = Pick<RestaurantEntity, "id" | "name">;

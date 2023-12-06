@@ -1,21 +1,28 @@
 import { Menu } from "src/components/menu/component";
 import { Reviews } from "src/components/reviews/component";
 import classes from "./styles.module.scss";
-import { RestaurantEntity } from "src/types";
 import { ReviewForm } from "../review-form/component";
 import classNames from "classnames";
+import { useAppSelector } from "../redux/hooks";
+import { selectRestaurantById } from "../redux/features/restaurant/selectors";
 
 interface Props {
-  restaurant: RestaurantEntity;
+  id: string;
   className?: string;
 }
 
-export const Restaurant: React.FC<Props> = ({ restaurant, className }) => {
+export const Restaurant: React.FC<Props> = ({ id, className }) => {
+  const restaurant = useAppSelector((state) => selectRestaurantById(state, id));
+
+  if (!restaurant) {
+    return null;
+  }
+
   return (
     <section className={classNames(classes.restaurant, className)}>
-      <h2>{restaurant.name}</h2>
-      <Menu dishes={restaurant.menu} />
-      <Reviews reviews={restaurant.reviews} />
+      <h2 className={classes.restaurant__name}>{restaurant.name}</h2>
+      <Menu dishIds={restaurant.menu} />
+      <Reviews reviewIds={restaurant.reviews} />
       <ReviewForm restaurantId={restaurant.id} />
     </section>
   );
