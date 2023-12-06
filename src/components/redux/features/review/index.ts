@@ -1,16 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { normalizedReviews } from "src/constants/normalized-mock";
-import { ReviewEntityNorm } from "src/types";
+import { ReviewEntity } from "src/types";
 
 interface ReviewAccType {
-  [key: string]: ReviewEntityNorm;
+  [key: string]: ReviewEntity;
 }
 
 export const reviewSlice = createSlice({
   name: "review",
   initialState: {
     entities: normalizedReviews.reduce(
-      (acc: ReviewAccType, review: ReviewEntityNorm) => {
+      (acc: ReviewAccType, review: ReviewEntity) => {
         acc[review.id] = review;
         return acc;
       },
