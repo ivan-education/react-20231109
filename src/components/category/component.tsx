@@ -1,6 +1,7 @@
 import { CategoryEntity } from "src/types";
 import classes from "./styles.module.scss";
 import classNames from "classnames";
+import { Button } from "../button/component";
 
 interface Props {
   category: CategoryEntity;
@@ -17,7 +18,7 @@ export const Category: React.FC<Props> = ({
 }) => {
   const activeCategoryClassName = isActive ? classes.category_active : "";
   return (
-    <button
+    <Button
       className={classNames(
         classes.category,
         activeCategoryClassName,
@@ -26,6 +27,6 @@ export const Category: React.FC<Props> = ({
       onClick={onClick}
     >
       {category.name}
-    </button>
+    </Button>
   );
 };

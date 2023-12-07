@@ -2,6 +2,7 @@ import { useEffect, useReducer } from "react";
 import { ReviewEntity } from "src/types";
 import { Counter } from "../counter/component";
 import classes from "./styles.module.scss";
+import { Button } from "../button/component";
 
 const RATING_MIN = 1;
 const RATING_MAX = 5;
@@ -108,11 +109,9 @@ export const ReviewForm: React.FC<Props> = ({ restaurantId }) => {
         </div>
         <div className={classes.form__row}>
           <label className={classes.form__label}></label>
-          <input
-            type="submit"
-            value="Submit"
-            className={classes.form__submit}
-          />
+          <Button type="submit" value="Submit" className={classes.form__submit}>
+            Submit
+          </Button>
         </div>
       </form>
     </div>

@@ -3,6 +3,7 @@ import { CategoryEntity, RestaurantEntity } from "src/types";
 import classes from "./styles.module.scss";
 import { useState } from "react";
 import { Restaurant } from "src/components/restaurant/component";
+import { Layout } from "src/components/layout/component";
 
 interface Props {
   restaurants: RestaurantEntity[];
@@ -22,18 +23,20 @@ export const RestaurantsPage: React.FC<Props> = ({ restaurants }) => {
   );
 
   return (
-    <section className="restaurantPage">
-      <Categories
-        categories={categories}
-        onCategorySelect={setSelectedRestaurantIndex}
-        className={classes.restaurantPage__category}
-      />
-      {selectedRestaurant && (
-        <Restaurant
-          restaurant={selectedRestaurant}
-          className={classes.restaurantPage__restaurant}
+    <Layout>
+      <div className="restaurantPage">
+        <Categories
+          categories={categories}
+          onCategorySelect={setSelectedRestaurantIndex}
+          className={classes.restaurantPage__category}
         />
-      )}
-    </section>
+        {selectedRestaurant && (
+          <Restaurant
+            restaurant={selectedRestaurant}
+            className={classes.restaurantPage__restaurant}
+          />
+        )}
+      </div>
+    </Layout>
   );
 };

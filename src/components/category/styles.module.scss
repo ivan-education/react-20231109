@@ -1,21 +1,32 @@
-@import '../../scss/common.scss'; 
+@import "../../scss/common.scss";
 
 .category {
-  padding: 1.5em;
-  border-radius: .5em;
   cursor: pointer;
-  background-color: $colorLightCreamy;
+  padding: 1.2em;
+  border-radius: 0.5em;
   border: none;
-  color: $colorBrown;
   box-sizing: border-box;
   width: 110px;
 
-  &:hover {
+  // :global() selector doesn't attach a hash to .light
+  &:global(.light) {
+    background-color: $colorLightCreamy;
+    color: $colorBrown;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &:global(.dark) {
     background-color: $colorBrown;
     color: $colorLightCreamy;
+
+    &:hover {
+      opacity: 0.7;
+    }
   }
 }
 .category_active {
-  background-color: lightgray;
-  color: black;
+  opacity: 0.7;
 }

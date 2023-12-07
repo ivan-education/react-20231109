@@ -1,0 +1,21 @@
+@import "./common.scss";
+
+@mixin headerButton() {
+  cursor: pointer;
+  padding: 1.2em;
+  border-radius: 1em;
+  border: none;
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  &:global(.light) {
+    background-color: $colorCreamy;
+    color: $colorBrown;
+  }
+  &:global(.dark) {
+    background-color: #fff;
+    color: black;
+  }
+}

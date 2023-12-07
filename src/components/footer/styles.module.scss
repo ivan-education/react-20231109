@@ -1,0 +1,14 @@
+@import "../../scss/common.scss";
+@import "../../scss/buttons.scss";
+
+.footer {
+  min-height: 75px;
+  background-color: $colorBrown;
+  display: flex;
+  align-items: center;
+  padding-left: 12px;
+}
+
+.footer__button {
+  @include headerButton();
+}
