@@ -1,5 +1,5 @@
-import { selectReviewById } from "../redux/features/review/selectors";
-import { selectUserById } from "../redux/features/user/selectors";
+import { selectReviewById } from "../redux/entities/review/selectors";
+import { selectUserById } from "../redux/entities/user/selectors";
 import { useAppSelector } from "../redux/hooks";
 import classes from "./styles.module.scss";
 import { Rating } from "src/components/rating/component";
