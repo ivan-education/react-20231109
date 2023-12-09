@@ -2,8 +2,8 @@ import { Category } from "src/components/category/component";
 import classes from "./styles.module.scss";
 import { useState } from "react";
 import classNames from "classnames";
-import { useAppSelector } from "../redux/hooks";
-import { selectRestaurantIds } from "../redux/entities/restaurant/selectors";
+import { useAppSelector } from "src/redux/hooks";
+import { selectRestaurantIds } from "src/redux/entities/restaurant/selectors";
 
 interface Props {
   onCategorySelect: (id: string) => void;

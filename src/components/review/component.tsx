@@ -1,6 +1,6 @@
-import { selectReviewById } from "../redux/entities/review/selectors";
-import { selectUserById } from "../redux/entities/user/selectors";
-import { useAppSelector } from "../redux/hooks";
+import { selectReviewById } from "src/redux/entities/review/selectors";
+import { selectUserById } from "src/redux/entities/user/selectors";
+import { useAppSelector } from "src/redux/hooks";
 import classes from "./styles.module.scss";
 import { Rating } from "src/components/rating/component";
 

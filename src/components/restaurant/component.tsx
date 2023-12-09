@@ -3,8 +3,8 @@ import { Reviews } from "src/components/reviews/component";
 import classes from "./styles.module.scss";
 import { ReviewForm } from "../review-form/component";
 import classNames from "classnames";
-import { useAppSelector } from "../redux/hooks";
-import { selectRestaurantById } from "../redux/entities/restaurant/selectors";
+import { useAppSelector } from "src/redux/hooks";
+import { selectRestaurantById } from "src/redux/entities/restaurant/selectors";
 
 interface Props {
   id: string;
