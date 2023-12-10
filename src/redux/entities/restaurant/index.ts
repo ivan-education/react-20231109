@@ -28,18 +28,15 @@ export const restaurantSlice = createSlice({
         state.status = RequestStatus.PENDING;
       })
       .addCase(getRestaurants.fulfilled, (state, { payload }) => {
-        const newEntities = payload.reduce(
+        state.entities = payload.reduce(
           (acc: RestaurantAccType, restaurant: RestaurantEntity) => {
             acc[restaurant.id] = restaurant;
             return acc;
           },
           {} as RestaurantAccType
         );
-        state.entities = { ...state.entities, ...newEntities };
 
-        const newIds = (payload as RestaurantEntity[]).map(({ id }) => id);
-        state.ids = state.ids.concat(newIds);
-
+        state.ids = (payload as RestaurantEntity[]).map(({ id }) => id);
         state.status = RequestStatus.FULFILLED;
       })
       .addCase(getRestaurants.rejected, (state) => {
