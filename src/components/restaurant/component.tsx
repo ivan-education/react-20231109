@@ -8,6 +8,7 @@ import { selectRestaurantById } from "src/redux/entities/restaurant/selectors";
 import { selectDishIdsByRestaurantId } from "src/redux/entities/dish/selectors";
 import { useEffect } from "react";
 import { getDishesByRestaurantId } from "src/redux/entities/dish/thunks/get-dish-by-restaurant-id";
+import { getUsers } from "src/redux/entities/user/thunks/get-users";
 
 interface Props {
   id: string;
@@ -24,6 +25,7 @@ export const Restaurant: React.FC<Props> = ({ id, className }) => {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(getDishesByRestaurantId(id));
+    dispatch(getUsers());
   }, [id]);
 
   if (!restaurant) {
