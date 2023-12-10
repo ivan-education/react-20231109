@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { DishEntity, RequestStatus } from "src/types";
-import { getDishesByRestaurantId } from "src/redux/entities/dish/thunks/get-dish-by-restaurant-id";
+import { getDishesByRestaurantId } from "src/redux/entities/dish/thunks/get-dishes-by-restaurant-id";
 
 interface DishAccType {
   [key: string]: DishEntity;

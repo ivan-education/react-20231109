@@ -9,7 +9,7 @@ interface Props {
 }
 export const Review: React.FC<Props> = ({ id }) => {
   const review = useAppSelector((state) => selectReviewById(state, id));
-  const user = useAppSelector((state) => selectUserById(state, review.userId));
+  const user = useAppSelector((state) => selectUserById(state, review?.userId));
 
   if (!review) {
     return null;

@@ -10,6 +10,7 @@ export const getDishesByRestaurantId = createAsyncThunk(
       `${API_URL}/dishes?restaurantId=${restaurantId}`
     );
     const result = await response.json();
+
     if (!result?.length) {
       rejectWithValue("No dishes");
     }
