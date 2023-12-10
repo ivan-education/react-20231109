@@ -1,9 +1,10 @@
 import { Category } from "src/components/category/component";
 import classes from "./styles.module.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import classNames from "classnames";
-import { useAppSelector } from "src/redux/hooks";
+import { useAppDispatch, useAppSelector } from "src/redux/hooks";
 import { selectRestaurantIds } from "src/redux/entities/restaurant/selectors";
+import { getRestaurants } from "src/redux/entities/restaurant/thunks/get-restaurants";
 
 interface Props {
   onCategorySelect: (id: string) => void;
@@ -14,10 +15,15 @@ export const Categories: React.FC<Props> = ({
   onCategorySelect,
   className,
 }) => {
+  const [activeCategoryId, setActiveCategoryId] = useState<string>("");
+
   // not necessary to get values from props, now we get them from Redux
   const categoryIds = useAppSelector(selectRestaurantIds);
 
-  const [activeCategoryId, setActiveCategoryId] = useState<string>("");
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(getRestaurants());
+  }, []);
 
   return (
     <section className={classNames(classes.categories)}>

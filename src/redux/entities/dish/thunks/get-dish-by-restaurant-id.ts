@@ -1,12 +1,13 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { selectDishIdsByRestaurantId, selectDishById } from "../selectors";
 import { RootState } from "src/redux";
+import { API_URL } from "src/constants/constants";
 
 export const getDishesByRestaurantId = createAsyncThunk(
   "dish/getDishesByRestaurantId",
   async (restaurantId: string, { rejectWithValue }) => {
     const response = await fetch(
-      `http://localhost:3001/api/dishes?restaurantId=${restaurantId}`
+      `${API_URL}/dishes?restaurantId=${restaurantId}`
     );
     const result = await response.json();
     if (!result?.length) {

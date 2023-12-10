@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from "src/redux/hooks";
 import { selectRestaurantById } from "src/redux/entities/restaurant/selectors";
 import { selectDishIdsByRestaurantId } from "src/redux/entities/dish/selectors";
 import { useEffect } from "react";
-import { getDishesByRestaurantId } from "src/redux/entities/dish/thunks/get-dish-by-restaurant";
+import { getDishesByRestaurantId } from "src/redux/entities/dish/thunks/get-dish-by-restaurant-id";
 
 interface Props {
   id: string;

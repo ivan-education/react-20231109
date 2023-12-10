@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { DishEntity, RequestStatus } from "src/types";
-import { getDishesByRestaurantId } from "src/redux/entities/dish/thunks/get-dish-by-restaurant";
+import { getDishesByRestaurantId } from "src/redux/entities/dish/thunks/get-dish-by-restaurant-id";
 
 interface DishAccType {
   [key: string]: DishEntity;
@@ -12,11 +12,11 @@ export interface DishState {
   status: RequestStatus;
 }
 
-const initialState = {
+const initialState: DishState = {
   entities: {} as DishAccType,
   ids: [] as string[],
   status: RequestStatus.IDLE,
-} as DishState;
+};
 
 export const dishSlice = createSlice({
   name: "dish",
