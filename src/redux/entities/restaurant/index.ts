@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
 import { RequestStatus, RestaurantEntity } from "src/types";
 import { getRestaurants } from "./thunks/get-restaurants";
 
@@ -18,9 +18,11 @@ const initialState: RestaurantState = {
   status: RequestStatus.IDLE,
 };
 
+const restaurantAdapter = createEntityAdapter<RestaurantEntity>();
+
 export const restaurantSlice = createSlice({
   name: "restaurant",
-  initialState: initialState,
+  initialState: restaurantAdapter.getInitialState(initialState),
   reducers: {},
   extraReducers: (builder) => {
     builder
@@ -28,15 +30,7 @@ export const restaurantSlice = createSlice({
         state.status = RequestStatus.PENDING;
       })
       .addCase(getRestaurants.fulfilled, (state, { payload }) => {
-        state.entities = payload.reduce(
-          (acc: RestaurantAccType, restaurant: RestaurantEntity) => {
-            acc[restaurant.id] = restaurant;
-            return acc;
-          },
-          {} as RestaurantAccType
-        );
-
-        state.ids = (payload as RestaurantEntity[]).map(({ id }) => id);
+        restaurantAdapter.upsertMany(state, payload);
         state.status = RequestStatus.FULFILLED;
       })
       .addCase(getRestaurants.rejected, (state) => {

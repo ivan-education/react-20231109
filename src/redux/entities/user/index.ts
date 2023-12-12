@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
 import { RequestStatus, UserEntity } from "src/types";
 import { getUsers } from "./thunks/get-users";
 
@@ -18,9 +18,11 @@ const initialState: UserState = {
   status: RequestStatus.IDLE,
 };
 
+const userAdapter = createEntityAdapter<UserEntity>();
+
 export const userSlice = createSlice({
   name: "user",
-  initialState: initialState,
+  initialState: userAdapter.getInitialState(initialState),
   reducers: {},
   extraReducers: (builder) => {
     builder
@@ -28,15 +30,7 @@ export const userSlice = createSlice({
         state.status = RequestStatus.PENDING;
       })
       .addCase(getUsers.fulfilled, (state, { payload }) => {
-        state.entities = (payload as UserEntity[]).reduce(
-          (acc: UserAccType, user: UserEntity) => {
-            acc[user.id] = user;
-            return acc;
-          },
-          {} as UserAccType
-        );
-
-        state.ids = (payload as UserEntity[]).map(({ id }) => id);
+        userAdapter.setMany(state, payload);
         state.status = RequestStatus.FULFILLED;
       })
       .addCase(getUsers.rejected, (state) => {

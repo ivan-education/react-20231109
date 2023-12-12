@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
 import { DishEntity, RequestStatus } from "src/types";
 import { getDishesByRestaurantId } from "src/redux/entities/dish/thunks/get-dishes-by-restaurant-id";
 
@@ -18,9 +18,11 @@ const initialState: DishState = {
   status: RequestStatus.IDLE,
 };
 
+const dishAdapter = createEntityAdapter<DishEntity>();
+
 export const dishSlice = createSlice({
   name: "dish",
-  initialState: initialState,
+  initialState: dishAdapter.getInitialState(initialState),
   reducers: {},
   extraReducers: (builder) => {
     builder
@@ -28,17 +30,8 @@ export const dishSlice = createSlice({
         state.status = RequestStatus.PENDING;
       })
       .addCase(getDishesByRestaurantId.fulfilled, (state, { payload }) => {
-        state.entities = (payload as DishEntity[]).reduce(
-          (acc: DishAccType, dish: DishEntity) => {
-            acc[dish.id] = dish;
-            return acc;
-          },
-          state.entities
-        );
-
-        const newIds = (payload as DishEntity[]).map(({ id }) => id);
-        state.ids = Array.from(new Set(state.ids.concat(newIds)));
-
+        // inserts or updates all DishEntities to the state in both `entities` object and `ids` array automatically
+        dishAdapter.upsertMany(state, payload);
         state.status = RequestStatus.FULFILLED;
       })
       .addCase(getDishesByRestaurantId.rejected, (state) => {

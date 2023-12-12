@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
 import { RequestStatus, ReviewEntity } from "src/types";
 import { getReviewsByRestaurantId } from "./thunks/get-reviews-by-restaurant-id";
 
@@ -18,9 +18,11 @@ const initialState: ReviewState = {
   status: RequestStatus.IDLE,
 };
 
+const reviewAdapter = createEntityAdapter<ReviewEntity>();
+
 export const reviewSlice = createSlice({
   name: "review",
-  initialState: initialState,
+  initialState: reviewAdapter.getInitialState(initialState),
   reducers: {},
   extraReducers: (builder) => {
     builder
@@ -28,17 +30,7 @@ export const reviewSlice = createSlice({
         state.status = RequestStatus.PENDING;
       })
       .addCase(getReviewsByRestaurantId.fulfilled, (state, { payload }) => {
-        state.entities = (payload as ReviewEntity[]).reduce(
-          (acc: ReviewAccType, review: ReviewEntity) => {
-            acc[review.id] = review;
-            return acc;
-          },
-          state.entities
-        );
-
-        const newIds = (payload as ReviewEntity[]).map(({ id }) => id);
-        state.ids = Array.from(new Set(state.ids.concat(newIds)));
-
+        reviewAdapter.upsertMany(state, payload);
         state.status = RequestStatus.FULFILLED;
       })
       .addCase(getReviewsByRestaurantId.rejected, (state) => {
