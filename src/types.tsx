@@ -28,3 +28,10 @@ export enum Theme {
   LIGHT = "light",
   DARK = "dark",
 }
+
+export enum RequestStatus {
+  IDLE = "idle",
+  PENDING = "pending",
+  FULFILLED = "fulfilled",
+  REJECTED = "rejected",
+}

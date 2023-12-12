@@ -1,6 +1,30 @@
-@import '../../scss/common.scss';
+@import "../../scss/common.scss";
 
 $pageWidth: 800px;
+
+.restaurantPage {
+  &:global(.loading) {
+    display: none;
+  }
+}
+
+.spinnerWrapper {
+  display: none;
+  height: 100%;
+  background-color: $lightCreamy;
+
+  &:global(.loading) {
+    display: block;
+  }
+}
+
+.spinner {
+  width: 100px;
+  display: block;
+  position: absolute;
+  left: calc(50% - 50px);
+  top: 150px;
+}
 
 .restaurantPage__category {
   margin: 0 auto;
@@ -15,5 +39,3 @@ $pageWidth: 800px;
     margin: 20px $mobilePadding;
   }
 }
-
-

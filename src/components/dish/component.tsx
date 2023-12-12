@@ -1,8 +1,8 @@
 import { Counter } from "../counter/component";
 import { useState } from "react";
 import classes from "./styles.module.scss";
-import { useAppSelector } from "../redux/hooks";
-import { selectDishById } from "../redux/features/dish/selectors";
+import { useAppSelector } from "src/redux/hooks";
+import { selectDishById } from "src/redux/entities/dish/selectors";
 
 interface Props {
   id: string;

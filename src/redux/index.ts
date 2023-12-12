@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { restaurantSlice } from "./features/restaurant";
-import { dishSlice } from "./features/dish";
-import { reviewSlice } from "./features/review";
-import { userSlice } from "./features/user";
+import { restaurantSlice } from "./entities/restaurant";
+import { dishSlice } from "./entities/dish";
+import { reviewSlice } from "./entities/review";
+import { userSlice } from "./entities/user";
 
 const store = configureStore({
   reducer: {
@@ -11,11 +11,10 @@ const store = configureStore({
     review: reviewSlice.reducer,
     user: userSlice.reducer,
   },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
 });
 
 export default store;
-
-console.log("Store: ", store.getState());
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;

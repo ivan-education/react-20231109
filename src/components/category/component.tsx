@@ -1,8 +1,8 @@
 import classes from "./styles.module.scss";
 import classNames from "classnames";
 import { Button } from "../button/component";
-import { useAppSelector } from "../redux/hooks";
-import { selectRestaurantById } from "../redux/features/restaurant/selectors";
+import { useAppSelector } from "src/redux/hooks";
+import { selectRestaurantById } from "src/redux/entities/restaurant/selectors";
 
 interface Props {
   categoryId: string;
