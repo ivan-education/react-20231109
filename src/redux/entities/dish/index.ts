@@ -28,17 +28,16 @@ export const dishSlice = createSlice({
         state.status = RequestStatus.PENDING;
       })
       .addCase(getDishesByRestaurantId.fulfilled, (state, { payload }) => {
-        const newEntities: DishAccType = (payload as DishEntity[]).reduce(
+        state.entities = (payload as DishEntity[]).reduce(
           (acc: DishAccType, dish: DishEntity) => {
             acc[dish.id] = dish;
             return acc;
           },
-          {} as DishAccType
+          state.entities
         );
-        state.entities = { ...state.entities, ...newEntities };
 
         const newIds = (payload as DishEntity[]).map(({ id }) => id);
-        state.ids = state.ids.concat(newIds);
+        state.ids = Array.from(new Set(state.ids.concat(newIds)));
 
         state.status = RequestStatus.FULFILLED;
       })

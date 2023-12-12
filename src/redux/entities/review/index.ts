@@ -28,17 +28,16 @@ export const reviewSlice = createSlice({
         state.status = RequestStatus.PENDING;
       })
       .addCase(getReviewsByRestaurantId.fulfilled, (state, { payload }) => {
-        const newEntities = (payload as ReviewEntity[]).reduce(
+        state.entities = (payload as ReviewEntity[]).reduce(
           (acc: ReviewAccType, review: ReviewEntity) => {
             acc[review.id] = review;
             return acc;
           },
-          {} as ReviewAccType
+          state.entities
         );
-        state.entities = { ...state.entities, ...newEntities };
 
         const newIds = (payload as ReviewEntity[]).map(({ id }) => id);
-        state.ids = state.ids.concat(newIds);
+        state.ids = Array.from(new Set(state.ids.concat(newIds)));
 
         state.status = RequestStatus.FULFILLED;
       })
