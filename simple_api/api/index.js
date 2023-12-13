@@ -71,6 +71,7 @@ router.post("/review/:restaurantId", (req, res, next) => {
       ...body,
       id: newReviewId,
     };
+    console.dir(newReview);
     restaurant.reviews.push(newReviewId);
     reviews.push(newReview);
   }

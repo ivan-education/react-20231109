@@ -1,15 +1,17 @@
-import { selectReviewById } from "src/redux/entities/review/selectors";
-import { selectUserById } from "src/redux/entities/user/selectors";
-import { useAppSelector } from "src/redux/hooks";
 import classes from "./styles.module.scss";
 import { Rating } from "src/components/rating/component";
+import { ReviewEntity, UserEntity } from "src/types";
+import { useGetUsersQuery } from "src/redux/services/api";
 
 interface Props {
-  id: string;
+  review: ReviewEntity;
 }
-export const Review: React.FC<Props> = ({ id }) => {
-  const review = useAppSelector((state) => selectReviewById(state, id));
-  const user = useAppSelector((state) => selectUserById(state, review?.userId));
+export const Review: React.FC<Props> = ({ review }) => {
+  const { user } = useGetUsersQuery(undefined, {
+    selectFromResult: ({ data: users }) => ({
+      user: users?.find((user: UserEntity) => user.id === review.id),
+    }),
+  });
 
   if (!review) {
     return null;

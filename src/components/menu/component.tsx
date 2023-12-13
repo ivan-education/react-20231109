@@ -1,32 +1,28 @@
-import { useEffect } from "react";
 import { Dish } from "../dish/component";
 import classes from "./styles.module.scss";
-import { useAppDispatch, useAppSelector } from "src/redux/hooks";
-import { getDishesByRestaurantId } from "src/redux/entities/dish/thunks/get-dishes-by-restaurant-id";
-import { selectDishIdsByRestaurantId } from "src/redux/entities/dish/selectors";
+import { useGetDishesByRestaurantIdQuery } from "src/redux/services/api";
+import { DishEntity } from "src/types";
 
 interface Props {
   restaurantId: string;
 }
 
 export const Menu: React.FC<Props> = ({ restaurantId }) => {
-  const dishIds = useAppSelector((state) =>
-    selectDishIdsByRestaurantId(state, restaurantId)
-  );
+  const { data: dishes, isFetching } =
+    useGetDishesByRestaurantIdQuery(restaurantId);
 
-  const dispatch = useAppDispatch();
-  useEffect(() => {
-    dispatch(getDishesByRestaurantId(restaurantId));
-  }, [restaurantId]);
+  if (isFetching) {
+    return "Loading...";
+  }
 
   return (
     <>
       <h3>Menu:</h3>
       <ul className={classes.dishes}>
-        {dishIds.map((dishId) => {
+        {dishes.map((dish: DishEntity) => {
           return (
-            <li key={dishId} className={classes.dishes__container}>
-              <Dish id={dishId} />
+            <li key={dish.id} className={classes.dishes__container}>
+              <Dish dish={dish} />
             </li>
           );
         })}

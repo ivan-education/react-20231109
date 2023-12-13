@@ -1,27 +1,22 @@
 import classes from "./styles.module.scss";
 import classNames from "classnames";
 import { Button } from "../button/component";
-import { useAppSelector } from "src/redux/hooks";
-import { selectRestaurantById } from "src/redux/entities/restaurant/selectors";
+import { RestaurantEntity } from "src/types";
 
 interface Props {
-  categoryId: string;
+  restaurant: RestaurantEntity;
   isActive: boolean;
   onClick: () => void;
   className?: string;
 }
 
 export const Category: React.FC<Props> = ({
-  categoryId,
+  restaurant,
   isActive,
   onClick,
   className,
 }) => {
-  const category = useAppSelector((state) =>
-    selectRestaurantById(state, categoryId)
-  );
-
-  if (!category) {
+  if (!restaurant) {
     return null;
   }
 
@@ -36,7 +31,7 @@ export const Category: React.FC<Props> = ({
       )}
       onClick={onClick}
     >
-      {category.name}
+      {restaurant.name}
     </Button>
   );
 };
