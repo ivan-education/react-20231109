@@ -9,9 +9,10 @@ interface Props {
 export const Review: React.FC<Props> = ({ review }) => {
   const { user } = useGetUsersQuery(undefined, {
     selectFromResult: ({ data: users }) => ({
-      user: users?.find((user: UserEntity) => user.id === review.id),
+      user: users?.find((user: UserEntity) => user.id === review.userId),
     }),
   });
+  //console.log("user: ", user);
 
   if (!review) {
     return null;

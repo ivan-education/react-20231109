@@ -3,6 +3,7 @@ import { API_URL } from "src/constants/constants";
 
 export const api = createApi({
   reducerPath: "api",
+  tagTypes: ["Review"],
   baseQuery: fetchBaseQuery({ baseUrl: API_URL }),
   endpoints: (builder) => ({
     //builder.query<RestaurantEntity[], unknown>
@@ -19,6 +20,15 @@ export const api = createApi({
       query: (restaurantId) => ({
         url: `/reviews?restaurantId=${restaurantId}`,
       }),
+      // each result, which is reviews array, is marked with a tag
+      providesTags: (result, _, restaurantId) =>
+        result
+          .map(({ id }: { id: string }) => ({ type: "Review", id }))
+          // tag for new, non-existing entities
+          .concat(
+            { type: "Review", id: "ALL" },
+            { type: "Review", id: restaurantId }
+          ),
     }),
     createReview: builder.mutation({
       query: ({ restaurantId, newReview }) => ({
@@ -26,6 +36,7 @@ export const api = createApi({
         method: "POST",
         body: newReview,
       }),
+      // invalidate tags to refresh the page
       invalidatesTags: (_result, _, { restaurantId }) => [
         { type: "Review", id: restaurantId },
       ],
