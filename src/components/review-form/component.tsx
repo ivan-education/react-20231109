@@ -115,16 +115,18 @@ export const ReviewForm: React.FC<Props> = ({ restaurantId }) => {
         <div className={classes.form__row}>
           <label className={classes.form__label}></label>
           <Button
-            onClick={() =>
+            onClick={() => {
               createReview({
                 restaurantId,
                 newReview: {
-                  name: reviewForm.user.name,
+                  // we don't pass name because can't update users so userId is just hardcoded
+                  userId: DEFAULT_FORM_STATE.user.id,
                   text: reviewForm.text,
                   rating: reviewForm.rating,
                 },
-              })
-            }
+              });
+              clearForm();
+            }}
             value="Submit"
             className={classes.form__submit}
           >

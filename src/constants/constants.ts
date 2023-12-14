@@ -1,2 +1,3 @@
 export const API_URL = "http://localhost:3001/api/";
-export const CURRENT_USER_ID = "dfb982e9-b432-4b7d-aec6-7f6ff2e6af54";
+export const CURRENT_USER_ID = "12345678-abcd-efgh-igkl-0123456789ab";
+export const ANONYMOUS_USER = "Anonymous";
