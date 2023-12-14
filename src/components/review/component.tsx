@@ -15,16 +15,20 @@ export const Review: React.FC<Props> = ({ review }) => {
     }),
   });
 
-  if (!review || isLoading) {
+  if (!review) {
     return null;
   }
 
   return (
     <div className={classes.review}>
       <div>
-        <div className={classes.review__name}>
-          {user ? user.name : ANONYMOUS_USER}
-        </div>
+        {isLoading ? (
+          <div>Loading username...</div>
+        ) : (
+          <div className={classes.review__name}>
+            {user ? user.name : ANONYMOUS_USER}
+          </div>
+        )}
         <div>{review.text}</div>
       </div>
       <div className={classes.review__rating}>

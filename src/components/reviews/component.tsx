@@ -9,7 +9,7 @@ export const Reviews: React.FC<{ restaurantId: string }> = ({
     useGetReviewsByRestaurantIdQuery(restaurantId);
 
   if (isFetching) {
-    return null;
+    return <div>Loading reviews...</div>;
   }
 
   return (

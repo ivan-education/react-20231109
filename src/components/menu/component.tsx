@@ -12,7 +12,7 @@ export const Menu: React.FC<Props> = ({ restaurantId }) => {
     useGetDishesByRestaurantIdQuery(restaurantId);
 
   if (isFetching) {
-    return "Loading...";
+    return <div>Loading menu...</div>;
   }
 
   return (
