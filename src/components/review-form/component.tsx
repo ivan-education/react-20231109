@@ -59,7 +59,7 @@ interface Props {
 
 export const ReviewForm: React.FC<Props> = ({ restaurantId }) => {
   const [reviewForm, dispatch] = useReducer(reducer, DEFAULT_FORM_STATE);
-  const [createReview, result] = useCreateReviewMutation();
+  const [createReview] = useCreateReviewMutation();
 
   const clearForm = () => {
     dispatch({ type: ACTIONS.SET_USER, payload: DEFAULT_USER });
