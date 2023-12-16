@@ -31,12 +31,22 @@ export const api = createApi({
           ),
     }),
     createReview: builder.mutation({
-      query: ({ restaurantId, newReview }) => ({
+      query: ({ restaurantId, ...newReview }) => ({
         url: `review/${restaurantId}`,
         method: "POST",
         body: newReview,
       }),
       // invalidate tags to refresh the page
+      invalidatesTags: (_result, _, { restaurantId }) => [
+        { type: "Review", id: restaurantId },
+      ],
+    }),
+    updateReview: builder.mutation({
+      query: ({ reviewId, ...updatedReview }) => ({
+        url: `review/${reviewId}`,
+        method: "PATCH",
+        body: updatedReview,
+      }),
       invalidatesTags: (_result, _, { restaurantId }) => [
         { type: "Review", id: restaurantId },
       ],
@@ -50,4 +60,5 @@ export const {
   useGetDishesByRestaurantIdQuery,
   useGetReviewsByRestaurantIdQuery,
   useCreateReviewMutation,
+  useUpdateReviewMutation,
 } = api;

@@ -4,11 +4,12 @@ import classes from "./styles.module.scss";
 import { Button } from "../button/component";
 import { UserEntity } from "src/types";
 import { useCreateReviewMutation } from "src/redux/services/api";
-import { CURRENT_USER_ID } from "src/constants/constants";
-
-const RATING_MIN = 1;
-const RATING_MAX = 5;
-const RATING_STEP = 0.5;
+import {
+  CURRENT_USER_ID,
+  RATING_MAX,
+  RATING_MIN,
+  RATING_STEP,
+} from "src/constants/constants";
 
 enum ACTIONS {
   SET_USER = "setUser",
@@ -118,12 +119,10 @@ export const ReviewForm: React.FC<Props> = ({ restaurantId }) => {
             onClick={() => {
               createReview({
                 restaurantId,
-                newReview: {
-                  // we don't pass name because can't update users so userId is just hardcoded
-                  userId: DEFAULT_FORM_STATE.user.id,
-                  text: reviewForm.text,
-                  rating: reviewForm.rating,
-                },
+                // we don't pass name because can't update users so userId is just hardcoded
+                userId: DEFAULT_FORM_STATE.user.id,
+                text: reviewForm.text,
+                rating: reviewForm.rating,
               });
               clearForm();
             }}
