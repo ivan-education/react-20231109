@@ -1,8 +1,8 @@
 @import "./common.scss";
 
-@mixin headerButton() {
+@mixin primaryButton() {
   cursor: pointer;
-  padding: 1.2em;
+  padding: 1em;
   border-radius: 1em;
   border: none;
 

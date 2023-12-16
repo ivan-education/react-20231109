@@ -1,3 +1,4 @@
+import { StarType } from "src/types";
 import { StarIcon } from "./star";
 
 const DEFAULT_MAX_RATING = 5;
@@ -11,16 +12,19 @@ export const Rating: React.FC<Props> = ({
   rating,
   max = DEFAULT_MAX_RATING,
 }) => {
-  const roundedRating = Math.ceil(rating);
   const stars = [];
 
   for (let i = 1; i <= max; i++) {
-    const star =
-      i <= roundedRating ? (
-        <StarIcon isActive={true} key={i} />
-      ) : (
-        <StarIcon key={i} />
-      );
+    let star;
+    if (i <= rating) {
+      star = <StarIcon key={i} type={StarType.ACTIVE} />;
+    } else {
+      if (i < rating + 1) {
+        star = <StarIcon key={i} type={StarType.INACTIVE} />;
+      } else {
+        star = <StarIcon key={i} type={StarType.HALF} />;
+      }
+    }
     stars.push(star);
   }
 
