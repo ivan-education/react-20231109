@@ -1,0 +1,23 @@
+@import "../../scss/buttons.scss";
+
+.reviewEdit__input {
+  height: 40px;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.reviewEdit__btnContainer {
+  margin-top: 10px;
+}
+
+.reviewEdit__form {
+  display: flex;
+}
+
+.reviewEdit__ratingLabel {
+  margin-right: 10px;
+}
+
+.reviewEdit__saveBtn {
+  @include primaryButton();
+}

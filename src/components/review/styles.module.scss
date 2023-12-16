@@ -17,10 +17,6 @@
     left: 0;
   }
 
-  &__name {
-    font-weight: bold;
-  }
-
   &__rating {
     display: flex;
     align-items: center;
@@ -29,22 +25,4 @@
 
 .review__editBtn {
   @include primaryButton();
-}
-
-.review__btnContainer {
-  margin-top: 10px;
-}
-
-.review__input {
-  height: 40px;
-  padding: 5px;
-  box-sizing: border-box;
-}
-
-.review__editForm {
-  display: flex;
-}
-
-.review__ratingLabel {
-  margin-right: 10px;
 }

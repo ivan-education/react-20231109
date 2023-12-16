@@ -1,6 +1,6 @@
-import { Review } from "../review/component";
 import { useGetReviewsByRestaurantIdQuery } from "src/redux/services/api";
 import { ReviewEntity } from "src/types";
+import { ReviewContainer } from "../review/container";
 
 export const Reviews: React.FC<{ restaurantId: string }> = ({
   restaurantId,
@@ -19,7 +19,7 @@ export const Reviews: React.FC<{ restaurantId: string }> = ({
         {reviews.map((review: ReviewEntity) => {
           return (
             <li key={review.id}>
-              <Review review={review} />
+              <ReviewContainer review={review} />
             </li>
           );
         })}
