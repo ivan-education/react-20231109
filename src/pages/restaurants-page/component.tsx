@@ -1,21 +1,17 @@
 import { Categories } from "src/components/categories/component";
 import classes from "./styles.module.scss";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Restaurant } from "src/components/restaurant/component";
 import { Layout } from "src/components/layout/component";
-import { useAppDispatch, useAppSelector } from "src/redux/hooks";
-import { getRestaurants } from "src/redux/entities/restaurant/thunks/get-restaurants";
-import { isDataLoading } from "src/redux/selectors";
 import classNames from "classnames";
+import { useGetRestaurantsQuery } from "src/redux/services/api";
+import { RestaurantEntity } from "src/types";
 
 export const RestaurantsPage: React.FC = () => {
-  const [selectedRestaurantId, setSelectedRestaurantId] = useState<string>("");
+  const [selectedRestaurant, setSelectedRestaurant] =
+    useState<RestaurantEntity>();
 
-  const isLoading = useAppSelector((state) => isDataLoading(state));
-  const dispatch = useAppDispatch();
-  useEffect(() => {
-    dispatch(getRestaurants());
-  }, []);
+  const { data: restaurants, isLoading } = useGetRestaurantsQuery(undefined);
 
   return (
     <Layout>
@@ -33,13 +29,16 @@ export const RestaurantsPage: React.FC = () => {
           isLoading ? "loading" : ""
         )}
       >
-        <Categories
-          onCategorySelect={setSelectedRestaurantId}
-          className={classes.restaurantPage__category}
-        />
-        {selectedRestaurantId && (
+        {!isLoading && (
+          <Categories
+            restaurants={restaurants}
+            onCategorySelect={setSelectedRestaurant}
+            className={classes.restaurantPage__category}
+          />
+        )}
+        {selectedRestaurant && (
           <Restaurant
-            id={selectedRestaurantId}
+            restaurant={selectedRestaurant}
             className={classes.restaurantPage__restaurant}
           />
         )}

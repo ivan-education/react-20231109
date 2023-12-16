@@ -3,10 +3,13 @@ import { Counter } from "../counter/component";
 import classes from "./styles.module.scss";
 import { Button } from "../button/component";
 import { UserEntity } from "src/types";
-
-const RATING_MIN = 1;
-const RATING_MAX = 5;
-const RATING_STEP = 0.5;
+import { useCreateReviewMutation } from "src/redux/services/api";
+import {
+  CURRENT_USER_ID,
+  RATING_MAX,
+  RATING_MIN,
+  RATING_STEP,
+} from "src/constants/constants";
 
 enum ACTIONS {
   SET_USER = "setUser",
@@ -15,16 +18,14 @@ enum ACTIONS {
 }
 
 interface ReviewForm {
-  id: string;
   user: UserEntity;
   text: string;
   rating: number;
 }
 
-const DEFAULT_USER = { id: "default_id", name: "" };
+const DEFAULT_USER = { id: CURRENT_USER_ID, name: "" };
 
 const DEFAULT_FORM_STATE: ReviewForm = {
-  id: "",
   user: DEFAULT_USER,
   text: "",
   rating: RATING_MAX,
@@ -57,18 +58,9 @@ interface Props {
   restaurantId: string;
 }
 
-const generateId = () => crypto.randomUUID();
-
 export const ReviewForm: React.FC<Props> = ({ restaurantId }) => {
   const [reviewForm, dispatch] = useReducer(reducer, DEFAULT_FORM_STATE);
-
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log("Submitted Form Values: ", {
-      ...reviewForm,
-      id: generateId(),
-    });
-  };
+  const [createReview] = useCreateReviewMutation();
 
   const clearForm = () => {
     dispatch({ type: ACTIONS.SET_USER, payload: DEFAULT_USER });
@@ -79,7 +71,7 @@ export const ReviewForm: React.FC<Props> = ({ restaurantId }) => {
   return (
     <div>
       <h4>Leave your review:</h4>
-      <form onSubmit={onSubmit}>
+      <div>
         <div className={classes.form__row}>
           <label htmlFor="username" className={classes.form__label}>
             Name:{" "}
@@ -123,11 +115,24 @@ export const ReviewForm: React.FC<Props> = ({ restaurantId }) => {
         </div>
         <div className={classes.form__row}>
           <label className={classes.form__label}></label>
-          <Button type="submit" value="Submit" className={classes.form__submit}>
+          <Button
+            onClick={() => {
+              createReview({
+                restaurantId,
+                // we don't pass name because can't update users so userId is just hardcoded
+                userId: DEFAULT_FORM_STATE.user.id,
+                text: reviewForm.text,
+                rating: reviewForm.rating,
+              });
+              clearForm();
+            }}
+            value="Submit"
+            className={classes.form__submit}
+          >
             Submit
           </Button>
         </div>
-      </form>
+      </div>
     </div>
   );
 };

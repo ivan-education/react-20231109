@@ -35,3 +35,9 @@ export enum RequestStatus {
   FULFILLED = "fulfilled",
   REJECTED = "rejected",
 }
+
+export enum StarType {
+  ACTIVE,
+  HALF,
+  INACTIVE,
+}
