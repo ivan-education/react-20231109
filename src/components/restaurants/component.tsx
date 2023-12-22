@@ -12,7 +12,7 @@ export const Restaurants: React.FC<Props> = ({ restaurants }) => {
       {restaurants.map((restaurant: RestaurantEntity) => {
         return (
           <li key={restaurant.id}>
-            <Restaurant restaurant={restaurant} />
+            <Restaurant />
           </li>
         );
       })}

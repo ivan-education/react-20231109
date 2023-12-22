@@ -2,36 +2,23 @@ import classes from "./styles.module.scss";
 import classNames from "classnames";
 import { Button } from "../button/component";
 import { RestaurantEntity } from "src/types";
+import { NavLink } from "react-router-dom";
 
 interface Props {
   restaurant: RestaurantEntity;
-  isActive: boolean;
-  onClick: () => void;
   className?: string;
 }
 
-export const Category: React.FC<Props> = ({
-  restaurant,
-  isActive,
-  onClick,
-  className,
-}) => {
+export const Category: React.FC<Props> = ({ restaurant, className }) => {
   if (!restaurant) {
     return null;
   }
 
-  const activeCategoryClassName = isActive ? classes.category_active : "";
-
   return (
-    <Button
-      className={classNames(
-        classes.category,
-        activeCategoryClassName,
-        className
-      )}
-      onClick={onClick}
-    >
-      {restaurant.name}
-    </Button>
+    <NavLink to={`${restaurant.id}`}>
+      <Button className={classNames(classes.category, className)}>
+        {restaurant.name}
+      </Button>
+    </NavLink>
   );
 };

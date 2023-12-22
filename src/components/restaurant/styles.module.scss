@@ -1,4 +1,5 @@
 @import "../../scss/common.scss";
+@import "../../scss/buttons.scss";
 
 .restaurant {
   border: 2px solid $colorCreamy;
@@ -9,4 +10,34 @@
 
 .restaurant__name {
   text-align: center;
+}
+
+.restaurant__backBtn {
+  @include primaryButton();
+
+  &:before {
+    content: "\2794";
+    display: inline-block;
+    margin-right: 5px;
+    transform: rotate(180deg);
+  }
+}
+
+.restaurant__tab {
+  display: flex;
+  justify-content: center;
+  background-color: #faebd7;
+}
+
+.restaurant__tabLink {
+  text-decoration: none;
+  margin-right: 10px;
+  font-size: 1.2em;
+  padding-bottom: 3px;
+  color: gray;
+
+  &:global(.active) {
+    color: black;
+    border-bottom: 3px solid black;
+  }
 }
