@@ -12,7 +12,7 @@ export const Layout: React.FC<Props> = ({ children }) => {
     <div className={classes.layout}>
       <ThemeProvider>
         <Header className={classes.layout__header} />
-        <main className={classes.layout__main}>{children}</main>
+        <main>{children}</main>
       </ThemeProvider>
       <Footer />
     </div>

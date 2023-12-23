@@ -19,3 +19,12 @@ ul {
 li {
   list-style-type: none;
 }
+
+.container {
+  margin: 20px auto;
+  max-width: 800px;
+
+  @media screen and (max-width: $breakpointMobile) {
+    margin: 20px $mobilePadding;
+  }
+}

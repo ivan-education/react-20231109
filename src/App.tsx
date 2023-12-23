@@ -18,8 +18,14 @@ export const App: React.FC = () => {
         <Layout>
           <Routes>
             <Route path="/" element={<Navigate to="/restaurants" replace />} />
-            <Route path="restaurants" element={<RestaurantsPage />} />
-            <Route path="restaurants/:restaurantId" element={<Restaurant />}>
+            <Route
+              path="restaurants"
+              element={<RestaurantsPage className="container" />}
+            />
+            <Route
+              path="restaurants/:restaurantId"
+              element={<Restaurant className="container" />}
+            >
               {/* Not obvious: redirect to "menu" happens when user gets to "restaurants/:restaurantId"  */}
               <Route index element={<Navigate to="menu" replace />} />
               <Route path="menu" element={<Menu />} />
