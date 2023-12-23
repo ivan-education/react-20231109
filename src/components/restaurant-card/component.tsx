@@ -1,13 +1,13 @@
 import { RestaurantEntity } from "src/types";
 import classes from "./styles.module.scss";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 interface Props {
   restaurant: RestaurantEntity;
 }
 export const RestaurantCard: React.FC<Props> = ({ restaurant }) => {
   return (
-    <NavLink to={`${restaurant.id}`} className={classes.card__wrapper}>
+    <Link to={`${restaurant.id}`} className={classes.card__wrapper}>
       <div className={classes.card}>
         <div>
           <img src={restaurant.img} alt="" className={classes.card__img} />
@@ -17,6 +17,6 @@ export const RestaurantCard: React.FC<Props> = ({ restaurant }) => {
           <p>{restaurant.description}</p>
         </div>
       </div>
-    </NavLink>
+    </Link>
   );
 };
