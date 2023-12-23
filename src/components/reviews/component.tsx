@@ -2,6 +2,8 @@ import { useGetReviewsByRestaurantIdQuery } from "src/redux/services/api";
 import { ReviewEntity } from "src/types";
 import { ReviewContainer } from "../review/container";
 import { useParams } from "react-router-dom";
+import { ReviewForm } from "../review-form/component";
+import classes from "./styles.module.scss";
 
 export const Reviews: React.FC = () => {
   const { restaurantId } = useParams();
@@ -25,6 +27,10 @@ export const Reviews: React.FC = () => {
           );
         })}
       </ul>
+      <ReviewForm
+        restaurantId={String(restaurantId)}
+        className={classes.reviews__reviewForm}
+      />
     </>
   );
 };

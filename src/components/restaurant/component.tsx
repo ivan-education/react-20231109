@@ -1,5 +1,4 @@
 import classes from "./styles.module.scss";
-import { ReviewForm } from "../review-form/component";
 import classNames from "classnames";
 import { NavLink, Outlet, useNavigate, useParams } from "react-router-dom";
 import { useGetRestaurantByIdQuery } from "src/redux/services/api";
@@ -23,8 +22,6 @@ export const Restaurant: React.FC<Props> = ({ className }) => {
   if (!restaurant) {
     return null;
   }
-
-  const id = restaurant.id;
 
   return (
     <section className={classNames(classes.restaurant, className)}>
@@ -61,8 +58,6 @@ export const Restaurant: React.FC<Props> = ({ className }) => {
       </div>
 
       <Outlet />
-
-      <ReviewForm restaurantId={id} />
     </section>
   );
 };
