@@ -1,13 +1,12 @@
+import { useParams } from "react-router-dom";
 import { Dish } from "../dish/component";
 import classes from "./styles.module.scss";
 import { useGetDishesByRestaurantIdQuery } from "src/redux/services/api";
 import { DishEntity } from "src/types";
 
-interface Props {
-  restaurantId: string;
-}
+export const Menu: React.FC = () => {
+  const { restaurantId } = useParams();
 
-export const Menu: React.FC<Props> = ({ restaurantId }) => {
   const { data: dishes, isFetching } =
     useGetDishesByRestaurantIdQuery(restaurantId);
 

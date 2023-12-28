@@ -1,4 +1,4 @@
-@import "./common.scss";
+@use "./common.scss";
 
 @mixin primaryButton() {
   cursor: pointer;
@@ -11,8 +11,8 @@
   }
 
   &:global(.light) {
-    background-color: $colorCreamy;
-    color: $colorBrown;
+    background-color: common.$colorCreamy;
+    color: common.$colorBrown;
   }
   &:global(.dark) {
     background-color: #fff;

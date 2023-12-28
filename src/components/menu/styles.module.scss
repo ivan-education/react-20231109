@@ -1,4 +1,4 @@
-@import '../../scss/common.scss';
+@use "../../scss/common.scss" as c;
 
 .dishes {
   display: flex;
@@ -9,7 +9,7 @@
   width: calc(50% - 10px);
   margin-bottom: 20px;
 
-  @media screen and (max-width: $breakpointMobile) {
+  @media screen and (max-width: c.$breakpointMobile) {
     width: 100%;
   }
 }

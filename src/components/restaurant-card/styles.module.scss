@@ -1,0 +1,25 @@
+@use "../../scss/common.scss" as c;
+
+.card__wrapper {
+  text-decoration: none;
+  color: inherit;
+}
+
+.card {
+  display: flex;
+  padding: 1em;
+  background-color: c.$colorLightCreamy;
+  border: 1px solid lightgray;
+
+  &:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+}
+.card__img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+.card_right {
+  margin-left: 10px;
+}

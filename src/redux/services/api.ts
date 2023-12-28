@@ -51,6 +51,11 @@ export const api = createApi({
         { type: "Review", id: restaurantId },
       ],
     }),
+    getRestaurantById: builder.query({
+      query: (restaurantId) => ({
+        url: `restaurant/${restaurantId}`,
+      }),
+    }),
   }),
 });
 
@@ -61,4 +66,5 @@ export const {
   useGetReviewsByRestaurantIdQuery,
   useCreateReviewMutation,
   useUpdateReviewMutation,
+  useGetRestaurantByIdQuery,
 } = api;

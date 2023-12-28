@@ -1,6 +1,8 @@
 export interface RestaurantEntity {
   id: string;
   name: string;
+  description: string;
+  img: string;
   menu: string[];
   reviews: string[];
 }

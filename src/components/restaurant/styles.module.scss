@@ -1,12 +1,43 @@
-@import "../../scss/common.scss";
+@use "../../scss/common.scss" as c;
+@use "../../scss/buttons.scss" as b;
 
 .restaurant {
-  border: 2px solid $colorCreamy;
+  border: 2px solid c.$colorCreamy;
   padding: 20px;
-  background-color: $colorLightCreamy;
+  background-color: c.$colorLightCreamy;
   border-radius: 0.3em;
 }
 
 .restaurant__name {
   text-align: center;
+}
+
+.restaurant__backBtn {
+  @include b.primaryButton();
+
+  &:before {
+    content: "\2794";
+    display: inline-block;
+    margin-right: 5px;
+    transform: rotate(180deg);
+  }
+}
+
+.restaurant__tab {
+  display: flex;
+  justify-content: center;
+  background-color: #faebd7;
+}
+
+.restaurant__tabLink {
+  text-decoration: none;
+  margin-right: 10px;
+  font-size: 1.2em;
+  padding-bottom: 3px;
+  color: gray;
+
+  &:global(.active) {
+    color: black;
+    border-bottom: 3px solid black;
+  }
 }

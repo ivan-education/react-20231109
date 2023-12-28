@@ -56,9 +56,10 @@ function reducer(state: ReviewForm, action: ActionType) {
 
 interface Props {
   restaurantId: string;
+  className?: string;
 }
 
-export const ReviewForm: React.FC<Props> = ({ restaurantId }) => {
+export const ReviewForm: React.FC<Props> = ({ restaurantId, className }) => {
   const [reviewForm, dispatch] = useReducer(reducer, DEFAULT_FORM_STATE);
   const [createReview] = useCreateReviewMutation();
 
@@ -69,8 +70,8 @@ export const ReviewForm: React.FC<Props> = ({ restaurantId }) => {
   useEffect(() => clearForm(), [restaurantId]);
 
   return (
-    <div>
-      <h4>Leave your review:</h4>
+    <div className={className}>
+      <h3>Leave your review:</h3>
       <div>
         <div className={classes.form__row}>
           <label htmlFor="username" className={classes.form__label}>
