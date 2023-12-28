@@ -1,4 +1,4 @@
-@import "../../scss/buttons.scss";
+@use "../../scss/buttons.scss" as b;
 
 .reviewEdit__input {
   height: 40px;
@@ -19,5 +19,5 @@
 }
 
 .reviewEdit__saveBtn {
-  @include primaryButton();
+  @include b.primaryButton();
 }

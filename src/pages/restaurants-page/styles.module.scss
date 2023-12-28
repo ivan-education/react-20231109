@@ -1,4 +1,4 @@
-@import "../../scss/common.scss";
+@use "../../scss/common.scss" as c;
 
 .restaurantPage {
   &:global(.loading) {
@@ -9,7 +9,7 @@
 .spinnerWrapper {
   display: none;
   height: 100%;
-  background-color: $lightCreamy;
+  background-color: c.$lightCreamy;
 
   &:global(.loading) {
     display: block;

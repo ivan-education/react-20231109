@@ -1,14 +1,14 @@
-@import "../../scss/common.scss";
-@import "../../scss/buttons.scss";
+@use "../../scss/common.scss";
+@use "../../scss/buttons.scss";
 
 .footer {
   min-height: 75px;
-  background-color: $colorBrown;
+  background-color: common.$colorBrown;
   display: flex;
   align-items: center;
   padding-left: 12px;
 }
 
 .footer__button {
-  @include primaryButton();
+  @include buttons.primaryButton();
 }

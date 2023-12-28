@@ -1,5 +1,5 @@
-@import "../../scss/common.scss";
-@import "../../scss/buttons.scss";
+@use "../../scss/common.scss" as c;
+@use "../../scss/buttons.scss" as b;
 
 .review {
   position: relative;
@@ -9,7 +9,7 @@
   line-height: 2.5;
   padding: 10px;
   box-sizing: border-box;
-  border: 2px dashed $colorCreamy;
+  border: 2px dashed c.$colorCreamy;
 
   &__icon {
     position: absolute;
@@ -24,5 +24,5 @@
 }
 
 .review__editBtn {
-  @include primaryButton();
+  @include b.primaryButton();
 }

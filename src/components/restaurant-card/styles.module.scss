@@ -1,4 +1,4 @@
-@import "../../scss/common.scss";
+@use "../../scss/common.scss" as c;
 
 .card__wrapper {
   text-decoration: none;
@@ -8,7 +8,7 @@
 .card {
   display: flex;
   padding: 1em;
-  background-color: $colorLightCreamy;
+  background-color: c.$colorLightCreamy;
   border: 1px solid lightgray;
 
   &:hover {

@@ -1,9 +1,9 @@
-@import "./common.scss";
+@use "./common.scss";
 
 html,
 body {
   margin: 0;
-  background-color: $lightCreamy;
+  background-color: common.$lightCreamy;
 }
 
 html,
@@ -24,7 +24,7 @@ li {
   margin: 20px auto;
   max-width: 800px;
 
-  @media screen and (max-width: $breakpointMobile) {
-    margin: 20px $mobilePadding;
+  @media screen and (max-width: common.$breakpointMobile) {
+    margin: 20px common.$mobilePadding;
   }
 }

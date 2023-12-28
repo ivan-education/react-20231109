@@ -1,10 +1,10 @@
-@import "../../scss/common.scss";
-@import "../../scss/buttons.scss";
+@use "../../scss/common.scss" as c;
+@use "../../scss/buttons.scss" as b;
 
 .restaurant {
-  border: 2px solid $colorCreamy;
+  border: 2px solid c.$colorCreamy;
   padding: 20px;
-  background-color: $colorLightCreamy;
+  background-color: c.$colorLightCreamy;
   border-radius: 0.3em;
 }
 
@@ -13,7 +13,7 @@
 }
 
 .restaurant__backBtn {
-  @include primaryButton();
+  @include b.primaryButton();
 
   &:before {
     content: "\2794";
