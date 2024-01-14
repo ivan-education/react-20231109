@@ -1,6 +1,4 @@
-@import "../../scss/common.scss";
-
-$pageWidth: 800px;
+@use "../../scss/common.scss" as c;
 
 .restaurantPage {
   &:global(.loading) {
@@ -11,7 +9,7 @@ $pageWidth: 800px;
 .spinnerWrapper {
   display: none;
   height: 100%;
-  background-color: $lightCreamy;
+  background-color: c.$lightCreamy;
 
   &:global(.loading) {
     display: block;
@@ -24,18 +22,4 @@ $pageWidth: 800px;
   position: absolute;
   left: calc(50% - 50px);
   top: 150px;
-}
-
-.restaurantPage__category {
-  margin: 0 auto;
-  max-width: $pageWidth;
-}
-
-.restaurantPage__restaurant {
-  margin: 20px auto;
-  max-width: $pageWidth;
-
-  @media screen and (max-width: $breakpointMobile) {
-    margin: 20px $mobilePadding;
-  }
 }

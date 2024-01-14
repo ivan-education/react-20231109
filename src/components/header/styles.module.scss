@@ -1,5 +1,5 @@
-@import "../../scss/common.scss";
-@import "../../scss/buttons.scss";
+@use "../../scss/common.scss" as c;
+@use "../../scss/buttons.scss" as b;
 
 .header {
   min-height: 75px;
@@ -7,10 +7,10 @@
   align-items: center;
   gap: 12px;
   padding-left: 12px;
-  background-color: $colorBrown;
+  background-color: c.$colorBrown;
   z-index: 1;
 }
 
 .header__button {
-  @include primaryButton();
+  @include b.primaryButton();
 }

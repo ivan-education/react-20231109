@@ -1,9 +1,9 @@
-@import '../../scss/common.scss';
+@use "../../scss/common.scss";
 
 .dish {
   padding: 10px;
-  border: 1px solid $colorCreamy;
-  border-radius: .5em;
+  border: 1px solid common.$colorCreamy;
+  border-radius: 0.5em;
   box-sizing: border-box;
   line-height: 2.5;
   display: flex;

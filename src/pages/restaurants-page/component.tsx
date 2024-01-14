@@ -1,20 +1,17 @@
-import { Categories } from "src/components/categories/component";
 import classes from "./styles.module.scss";
-import { useState } from "react";
-import { Restaurant } from "src/components/restaurant/component";
-import { Layout } from "src/components/layout/component";
 import classNames from "classnames";
 import { useGetRestaurantsQuery } from "src/redux/services/api";
-import { RestaurantEntity } from "src/types";
+import { RestaurantCards } from "src/components/restaurant-cards/component";
 
-export const RestaurantsPage: React.FC = () => {
-  const [selectedRestaurant, setSelectedRestaurant] =
-    useState<RestaurantEntity>();
+interface Props {
+  className?: string;
+}
 
+export const RestaurantsPage: React.FC<Props> = ({ className }) => {
   const { data: restaurants, isLoading } = useGetRestaurantsQuery(undefined);
 
   return (
-    <Layout>
+    <div>
       <div
         className={classNames(
           classes.spinnerWrapper,
@@ -26,23 +23,12 @@ export const RestaurantsPage: React.FC = () => {
       <div
         className={classNames(
           classes.restaurantPage,
+          className,
           isLoading ? "loading" : ""
         )}
       >
-        {!isLoading && (
-          <Categories
-            restaurants={restaurants}
-            onCategorySelect={setSelectedRestaurant}
-            className={classes.restaurantPage__category}
-          />
-        )}
-        {selectedRestaurant && (
-          <Restaurant
-            restaurant={selectedRestaurant}
-            className={classes.restaurantPage__restaurant}
-          />
-        )}
+        {!isLoading && <RestaurantCards restaurants={restaurants} />}
       </div>
-    </Layout>
+    </div>
   );
 };

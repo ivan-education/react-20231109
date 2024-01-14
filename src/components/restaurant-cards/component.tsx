@@ -1,18 +1,18 @@
-import { Restaurant } from "src/components/restaurant/component";
 import classes from "./styles.module.scss";
 import { RestaurantEntity } from "src/types";
+import { RestaurantCard } from "../restaurant-card/component";
 
 interface Props {
   restaurants: RestaurantEntity[];
 }
 
-export const Restaurants: React.FC<Props> = ({ restaurants }) => {
+export const RestaurantCards: React.FC<Props> = ({ restaurants }) => {
   return (
-    <ul className={classes.restaurants}>
+    <ul className={classes.cards}>
       {restaurants.map((restaurant: RestaurantEntity) => {
         return (
           <li key={restaurant.id}>
-            <Restaurant restaurant={restaurant} />
+            <RestaurantCard restaurant={restaurant} />
           </li>
         );
       })}
