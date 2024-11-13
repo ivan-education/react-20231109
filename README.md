@@ -1,6 +1,6 @@
 # React + TypeScript + Vite
 
-## Project Setup:
+## Init Project:
 
 Установка проекта на React Typescript с пом. Vite:
 
@@ -9,6 +9,33 @@
 3. Выбрать `typescript + SWC`
 4. cd folder
 5. `pnpm install` (или `npm install`)
+
+## Run the project
+
+### develop
+
+`npm run dev` - для запуска сервера c React
+`npm run start-server` - для запуска сервера с API в `./simple_api`
+
+### production
+
+`npm run build` и затем `npm run preview` - для запуска сервера c React
+`npm run start-server` - для запуска сервера с API в `./simple_api`
+
+Для загрузки данных используется Express сервер в папке `./simple_api` с данными по ресторанам, блюдам и т.д.
+Деплоил проект на Beget VPS с Node.js (см. соотв.секцию). Для этого были созданы два файла `.env` и `.env.production`. При дев сборке `npm run dev` Vite использует `VITE_API_URL` из файла `.env` - урл для АПИ (достается в коде как `import.meta.env.VITE_API_URL`, где в имени `VITE_` префикс важен). Тогда для данных из API нужно будет запустить локальный Express: `npm run start-server`.
+
+При сборке на VPS используется прод сборка `npm run build` и затем `npm run preview`, где Vite использует `VITE_API_URL` из файла `.env.production`.
+
+Для тестирования прод сборки локально поменять `VITE_API_URL` в файле `.env.production` на localhost (значение из `.env`). Более подробно см. https://vitejs.dev/guide/env-and-mode.html
+
+## Deploy to VPS
+
+см. документ `/Users/ibursky/Documents/programming/Deploy to VPS.odt` (пункты "Как работать с VPS", "Как запустить простое Node приложение на VPS", "Как запустить React на VPS")
+
+---
+
+## Ниже текст по умолчанию:
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
